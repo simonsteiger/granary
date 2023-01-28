@@ -23,21 +23,15 @@ ui <- function(id, data) {
     numericInput(
       inputId = ns("multiplier"), 
       label = "Enter total quantity in grams", value = 1000
-    ),
-    reactableOutput(ns("table"))
+    )
   )
 }
 
 #' @export
 server <- function(id, data) {
   moduleServer(id, function(input, output, session) {
-    
-    out <- reactive({
+    reactive({
       resize(data, input$formula, input$multiplier)
-    })
-    
-    output$table <- renderReactable({
-      reactable(out())
     })
   })
 }

@@ -6,7 +6,7 @@ box::use(
 )
 
 vermont <- tibble(name = "vermont", 
-                  stage = c(rep("A", times = 3), "F", rep("L", times = 3)),
+                  stage = c(rep("Autolysis", times = 3), "Final fermentation", rep("Levain", times = 3)),
                   ingredient = c("bread flour", "whole-rye flour", "water", "salt", "bread flour", "water", "mature culture"),
                   weight = c(6.5, 1.5, 4, 0.19, 2, 2.5, 0.4),
                   levain = 12,
@@ -21,7 +21,7 @@ vermont <- tibble(name = "vermont",
 )
 
 vollkornbrot <- tibble(name = "vollkornbrot",
-                       stage = c(rep("F", times = 5), rep("L", times = 3), rep("S", times = 2)),
+                       stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 2)),
                        ingredient = c("whole-rye flour", "water", "salt", "yeast", "sunflower seeds", "whole-rye flour", "water", "mature culture", "rye chops", "water"),
                        weight = c(2.73, 0.94, 0.2, 0.18, 0.55, 4.11, 4.11, 0.206, 3.16, 3.16),
                        levain = 12,
@@ -36,7 +36,7 @@ vollkornbrot <- tibble(name = "vollkornbrot",
 )
 
 semolina <- tibble(name = "semolina", 
-                   stage = c(rep("F", times = 5), rep("L", times = 3)),
+                   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
                    ingredient = c("bread flour", "durum flour", "water", "toasted sesame", "salt", "bread flour",
                                   "water", "mature culture"),
                    weight = c(166, 400, 321, 33, 13, 100, 132, 20),
@@ -52,7 +52,7 @@ semolina <- tibble(name = "semolina",
 )
 
 brioche <- tibble(name = "brioche",
-                  stage = "F",
+                  stage = "Final fermentation",
                   ingredient = c("bread flour", "manitoba flour", "water", "eggs", "salt", "sugar", "yeast", "butter"), 
                   weight = c(200, 200, 36, 200, 10, 48, 20, 200),
                   levain = NA,
@@ -67,7 +67,7 @@ brioche <- tibble(name = "brioche",
 )
 
 olivelevain <- tibble(name = "olivelevain",
-                      stage = c(rep("F", times = 5), rep("L", times = 3)),
+                      stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
                       ingredient = c("bread flour", "whole-wheat flour", "water", "salt", "olives", 
                                      "bread flour", "water", "mature culture"),
                       weight = c(9, 1, 6.3, .15, 2.5, 1.8, 2.25, .36),
@@ -83,7 +83,7 @@ olivelevain <- tibble(name = "olivelevain",
 )
 
 fivegrain <- tibble(name = "fivegrain",
-                    stage = c(rep("F", times = 5), rep("L", times = 3), rep("S", times = 6)),
+                    stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 6)),
                     ingredient = c("yeast", "bread flour", "whole-wheat flour", "water", "salt", "bread flour", 
                                    "water", "mature culture", "cracked rye",
                                    "flaxseeds", "sunflower seeds", "oats", "water", "salt"),
@@ -100,7 +100,7 @@ fivegrain <- tibble(name = "fivegrain",
 )
 
 pal_m <- tibble(name = "pain au levain, mixed starters",
-                stage = c(rep("F", times = 4), rep("L", times = 6)),
+                stage = c(rep("Final fermentation", times = 4), rep("Levain", times = 6)),
                 ingredient = c("bread flour", "whole-wheat flour", "water", "salt", 
                                "bread flour", "water", "mature culture, wheat",
                                "bread flour", "water", "mature culture, rye"),
@@ -117,7 +117,7 @@ pal_m <- tibble(name = "pain au levain, mixed starters",
 )
 
 wwm <- tibble(name = "whole-wheat multigrain",
-              stage = c(rep("F", times = 6), rep("L", times = 3), rep("S", times = 2)),
+              stage = c(rep("Final fermentation", times = 6), rep("Levain", times = 3), rep("Soaker", times = 2)),
               ingredient = c("bread flour", "whole-wheat flour", "water", "salt", "yeast", "honey", 
                              "bread flour", "water", "mature culture",
                              "grain mix", "water"),
@@ -134,7 +134,7 @@ wwm <- tibble(name = "whole-wheat multigrain",
 )
 
 pry <- tibble(name = "pain rustique (yeast)",
-              stage = c(rep("F", times = 4), rep("L", times = 3)),
+              stage = c(rep("Final fermentation", times = 4), rep("Levain", times = 3)),
               ingredient = c("bread flour", "water", "salt", "yeast",
                              "bread flour", "water", "yeast"
               ),
@@ -151,7 +151,7 @@ pry <- tibble(name = "pain rustique (yeast)",
 )
 
 pizza <- tibble(name = "pizza (yeast)",
-                stage = c(rep("F", times = 5), rep("L", times = 3)),
+                stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
                 ingredient = c("bread flour", "water", "salt", "yeast", "evoo", 
                                "bread flour", "water", "yeast"),
                 weight = c(2.06, 1.44, .046, .033, .13, .52, .31, .001),
@@ -167,7 +167,7 @@ pizza <- tibble(name = "pizza (yeast)",
 )
 
 ciabatta_biga <- tibble(name = "ciabatta (biga)",
-                        stage = c(rep("F", times = 4), rep("B", times = 3)),
+                        stage = c(rep("Final fermentation", times = 4), rep("B", times = 3)),
                         ingredient = c("bread flour", "water", "salt", "yeast",
                                        "bread flour", "water", "yeast"),
                         weight = c(8, 6.1, .2, .116, 
@@ -183,7 +183,7 @@ ciabatta_biga <- tibble(name = "ciabatta (biga)",
                         source = "Hamelman")
 
 mpc <- tibble(name = "miche pointe a calliere",
-              stage = c(rep("F", times = 3), rep("L", times = 3)),
+              stage = c(rep("Final fermentation", times = 3), rep("Levain", times = 3)),
               ingredient = c("high extraction wheat flour", "water", "salt",
                              "high extraction wheat flour", "water", "mature culture"),
               weight = c(8, 7, .18,

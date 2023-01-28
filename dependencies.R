@@ -2,6 +2,8 @@
 library(rhino)
 library(dplyr)
 library(tidyr)
+library(purrr)
 library(shinyWidgets)
 library(bslib)
 library(reactable)
+library(thematic)

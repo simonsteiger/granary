@@ -2,19 +2,23 @@ box::use(
   shiny[bootstrapPage, moduleServer, NS, renderText, tags, textOutput],
 )
 
+box::use(
+  app/view/formula,
+  app/logic/cookbook[cookbook],
+)
+
 #' @export
 ui <- function(id) {
   ns <- NS(id)
   bootstrapPage(
-    tags$h3(
-      textOutput(ns("message"))
-    )
+    formula$ui(ns("formula"), cookbook)
   )
 }
 
 #' @export
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    output$message <- renderText("Hello!")
+      
+    formula$server("formula", cookbook)
   })
 }

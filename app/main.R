@@ -1,10 +1,11 @@
 box::use(
-  shiny[bootstrapPage, moduleServer, reactive, NS, tags],
-  bslib[bs_theme],
+  shiny[bootstrapPage, moduleServer, reactive, NS, tags, div],
+  bslib[bs_theme, layout_column_wrap],
   thematic[thematic_on, thematic_shiny, font_spec]
 )
 
 box::use(
+  app/view/title,
   app/view/formula,
   app/view/present,
   app/logic/cookbook[cookbook],
@@ -16,8 +17,16 @@ ui <- function(id) {
   ns <- NS(id)
   bootstrapPage(
     theme = theme,
-    formula$ui(ns("formula"), cookbook),
-    present$ui(ns("present"), cookbook)
+    div(
+      class = "components-container", 
+      title$ui(ns("title")),
+      layout_column_wrap(
+        width = 1/2, 
+        height = "auto",
+        formula$ui(ns("formula"), cookbook),
+        present$ui(ns("present"), cookbook) 
+      )
+    )
   )
 }
 

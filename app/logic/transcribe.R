@@ -1,4 +1,3 @@
-# app/logic/transcribe
 
 box::use(
   dplyr[filter, select, summarise],
@@ -6,7 +5,7 @@ box::use(
 )
 
 transcribe <- function(data) {
-  data |> 
+  data |>
     summarise(
       glued := glue("{stage}: {weight}g {ingredient}")
     )

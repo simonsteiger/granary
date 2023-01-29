@@ -1,4 +1,3 @@
-# app/view/present
 
 box::use(
   shiny[moduleServer, NS, reactive, is.reactive, renderUI, htmlOutput, HTML, tags],
@@ -21,19 +20,19 @@ ui <- function(id, data) {
 server <- function(id, data) {
   moduleServer(id, function(input, output, session) {
     stopifnot(is.reactive(data))
-    
     glued <- reactive({
-      data() |> 
-        transcribe() |> 
+      data() |>
+        transcribe() |>
         pull(glued)
     })
-    
     out <- reactive(
       card(
+        class = "component-box",
+        full_screen = TRUE,
         card_header(
           class = "bg-dark",
           "Formula"
-        ),
+          ),
         card_body(
           height = 200,
           HTML(
@@ -43,11 +42,9 @@ server <- function(id, data) {
               )
             )
           )
-          
         )
       )
     )
-    
     output$card <- renderUI({
       out()
     })

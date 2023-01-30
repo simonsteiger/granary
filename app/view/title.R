@@ -8,8 +8,8 @@ ui <- function(id) {
   ns <- NS(id)
   div(
     class = "header",
-    tags$h1("Recipe resize"),
-    icon("r-project")
+    icon("r-project"),
+    tags$h1("ecipe resizer")
   )
 }
 

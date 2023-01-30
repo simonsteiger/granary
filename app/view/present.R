@@ -2,7 +2,6 @@
 box::use(
   shiny[moduleServer, NS, reactive, is.reactive, renderUI, htmlOutput, HTML, tags],
   bslib[card, card_header, card_body],
-  dplyr[pull],
   purrr[map],
 )
 
@@ -20,10 +19,9 @@ ui <- function(id, data) {
 server <- function(id, data) {
   moduleServer(id, function(input, output, session) {
     stopifnot(is.reactive(data))
-    glued <- reactive({
+    transcribed <- reactive({
       data() |>
-        transcribe() |>
-        pull(glued)
+        transcribe()
     })
     out <- reactive(
       card(
@@ -36,11 +34,7 @@ server <- function(id, data) {
         card_body(
           height = 200,
           HTML(
-            as.character(
-              tags$ul(
-                map(glued(), ~tags$li(.x))
-              )
-            )
+            transcribed()
           )
         )
       )

@@ -11,6 +11,18 @@
     margin-bottom: 30px;
   }
   
+  .button-menu {
+    font-size: 2.25rem;
+    margin-right: 8rem;
+    margin-left: 8rem;
+    
+    .shiny-input-container {
+      display: flex;
+      justify-content: center;
+      margin: 1rem;
+    }
+  }
+  
   .component-box {
     margin: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

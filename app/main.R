@@ -1,7 +1,7 @@
 box::use(
-  shiny[bootstrapPage, moduleServer, reactive, NS, tags, div],
+  shiny[bootstrapPage, moduleServer, reactive, NS, tags, div, icon],
   bslib[bs_theme, layout_column_wrap],
-  thematic[thematic_on, thematic_shiny, font_spec]
+  thematic[thematic_on, thematic_shiny, font_spec],
 )
 
 box::use(
@@ -9,7 +9,7 @@ box::use(
   app/view/formula,
   app/view/present,
   app/logic/cookbook[cookbook],
-  app/logic/theme[theme]
+  app/logic/theme[theme],
 )
 
 #' @export

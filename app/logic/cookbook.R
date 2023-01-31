@@ -5,7 +5,7 @@ box::use(
 )
 
 vermont <- tibble(
-  name = "vermont",
+  name = "Vermont sourdough",
   stage = c(rep("Autolysis", times = 3), "Final fermentation", rep("Levain", times = 3)),
   ingredient = c("bread flour", "whole-rye flour", "water", "salt", "bread flour", "water", "mature culture"),
   weight = c(6.5, 1.5, 4, 0.19, 2, 2.5, 0.4),
@@ -21,7 +21,7 @@ vermont <- tibble(
 )
 
 vollkornbrot <- tibble(
-  name = "vollkornbrot",
+  name = "Vollkornbrot",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 2)),
   ingredient = c("whole-rye flour", "water", "salt", "yeast", "sunflower seeds", "whole-rye flour", "water", "mature culture", "rye chops", "water"),
   weight = c(2.73, 0.94, 0.2, 0.18, 0.55, 4.11, 4.11, 0.206, 3.16, 3.16),
@@ -37,7 +37,7 @@ vollkornbrot <- tibble(
   )
 
 semolina <- tibble(
-  name = "semolina",
+  name = "Semolina Bread",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
   ingredient = c("bread flour", "durum flour", "water", "toasted sesame", "salt", "bread flour",
                  "water", "mature culture"),
@@ -54,7 +54,7 @@ semolina <- tibble(
   )
 
 brioche <- tibble(
-  name = "brioche",
+  name = "Hamelman's Brioche",
   stage = "Final fermentation",
   ingredient = c("bread flour", "manitoba flour", "water", "eggs", "salt", "sugar", "yeast", "butter"),
   weight = c(200, 200, 36, 200, 10, 48, 20, 200),
@@ -70,7 +70,7 @@ brioche <- tibble(
 )
 
 olivelevain <- tibble(
-  name = "olivelevain",
+  name = "Olive Levain",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
   ingredient = c("bread flour", "whole-wheat flour", "water", "salt", "olives",
                  "bread flour", "water", "mature culture"),
@@ -87,7 +87,7 @@ olivelevain <- tibble(
 )
 
 fivegrain <- tibble(
-  name = "fivegrain",
+  name = "Fivegrain Levain",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 6)),
   ingredient = c("yeast", "bread flour", "whole-wheat flour", "water", "salt", "bread flour",
                  "water", "mature culture", "cracked rye", "flaxseeds", "sunflower seeds", "oats", "water", "salt"),
@@ -104,7 +104,7 @@ fivegrain <- tibble(
 )
 
 pal_m <- tibble(
-  name = "pain au levain, mixed starters",
+  name = "Pain au Levain, mixed starters",
   stage = c(rep("Final fermentation", times = 4), rep("Levain", times = 6)),
   ingredient = c("bread flour", "whole-wheat flour", "water", "salt",
                  "bread flour", "water", "mature culture, wheat",
@@ -122,7 +122,7 @@ pal_m <- tibble(
 )
 
 wwm <- tibble(
-  name = "whole-wheat multigrain",
+  name = "Whole-wheat Multigrain",
   stage = c(rep("Final fermentation", times = 6), rep("Levain", times = 3), rep("Soaker", times = 2)),
   ingredient = c("bread flour", "whole-wheat flour", "water", "salt", "yeast", "honey",
                  "bread flour", "water", "mature culture",
@@ -140,7 +140,7 @@ wwm <- tibble(
 )
 
 pry <- tibble(
-  name = "pain rustique (yeast)",
+  name = "Pain Rustique, yeast",
   stage = c(rep("Final fermentation", times = 4), rep("Levain", times = 3)),
   ingredient = c("bread flour", "water", "salt", "yeast",
                  "bread flour", "water", "yeast"),
@@ -157,7 +157,7 @@ pry <- tibble(
 )
 
 pizza <- tibble(
-  name = "pizza (yeast)",
+  name = "Pizza, yeast",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
   ingredient = c("bread flour", "water", "salt", "yeast", "evoo",
                  "bread flour", "water", "yeast"),
@@ -174,8 +174,8 @@ pizza <- tibble(
 )
 
 ciabatta_biga <- tibble(
-  name = "ciabatta (biga)",
-  stage = c(rep("Final fermentation", times = 4), rep("B", times = 3)),
+  name = "Ciabatta, biga",
+  stage = c(rep("Final fermentation", times = 4), rep("Biga", times = 3)),
   ingredient = c("bread flour", "water", "salt", "yeast",
                  "bread flour", "water", "yeast"),
   weight = c(8, 6.1, .2, .116, 2, 1.2, .004),
@@ -191,7 +191,7 @@ ciabatta_biga <- tibble(
   )
 
 mpc <- tibble(
-  name = "miche pointe a calliere",
+  name = "Miche Pointe à Callière",
   stage = c(rep("Final fermentation", times = 3), rep("Levain", times = 3)),
   ingredient = c("high extraction wheat flour", "water", "salt",
                  "high extraction wheat flour", "water", "mature culture"),

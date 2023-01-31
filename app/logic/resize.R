@@ -1,6 +1,6 @@
 
 box::use(
-  dplyr[filter, select, mutate]
+  dplyr[filter, select, mutate, if_else]
 )
 
 resize <- function(data, formula, multiplier) {
@@ -8,9 +8,16 @@ resize <- function(data, formula, multiplier) {
     filter(name == formula) |>
     select(stage, ingredient, weight) |>
     mutate(
-      weight = round(
-        weight / sum(weight) * as.numeric(multiplier),
-        digits = 0
+      weight = if_else(
+        ingredient %in% c("yeast", "salt"),
+        round(
+          weight / sum(weight) * as.numeric(multiplier),
+          digits = 2
+        ),
+        round(
+          weight / sum(weight) * as.numeric(multiplier),
+          digits = 0
+        )
       )
     )
 }

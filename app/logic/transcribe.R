@@ -16,7 +16,7 @@ transcribe <- function(data) {
       collapsed = paste0(glued, collapse = "")
     ) |> 
     mutate(
-      res := glue("<p><b>{stage}</b></ul>{collapsed}</ul></p>")
+      res := glue("<h6>{stage}</h6></ul>{collapsed}</ul></br>")
     ) |>
     pull(res)
 }

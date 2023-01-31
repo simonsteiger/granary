@@ -1,6 +1,6 @@
 
 box::use(
-  shiny[moduleServer, NS, reactive, tagList, numericInput],
+  shiny[moduleServer, NS, reactive, tagList, numericInput, icon],
   shinyWidgets[pickerInput],
   reactable[reactable, renderReactable, reactableOutput],
   bslib[card, card_header, card_body]
@@ -18,14 +18,18 @@ ui <- function(id, data) {
     full_screen = TRUE,
     card_header(
       class = "bg-dark",
-      "Inputs"
+      "Choice menu"
       ),
     card_body(
       tagList(
         pickerInput(
           inputId = ns("formula"),
           label = "Select formula",
-          choices = unique(data$name)
+          choices = unique(data$name),
+          options = list(
+            `live-search` = TRUE,
+            `live-search-normalize` = TRUE
+            )
         ),
         numericInput(
           inputId = ns("multiplier"),

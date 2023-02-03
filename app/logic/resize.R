@@ -1,6 +1,6 @@
 
 box::use(
-  dplyr[filter, select, mutate, if_else]
+  dplyr[filter, select, mutate, if_else, case_when]
 )
 
 resize <- function(data, formula, multiplier) {
@@ -8,16 +8,11 @@ resize <- function(data, formula, multiplier) {
     filter(name == formula) |>
     select(stage, ingredient, weight) |>
     mutate(
-      weight = if_else(
-        ingredient %in% c("yeast", "salt"),
-        round(
-          weight / sum(weight) * as.numeric(multiplier),
-          digits = 2
-        ),
-        round(
-          weight / sum(weight) * as.numeric(multiplier),
-          digits = 0
-        )
+      weight = weight / sum(weight) * as.numeric(multiplier),
+      weight = case_when(
+        weight < .05 ~ round(weight, 2),
+        weight < 5 ~ round(weight, 1),
+        TRUE ~ round(weight, 0)
       )
     )
 }

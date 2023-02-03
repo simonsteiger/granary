@@ -207,6 +207,23 @@ mpc <- tibble(
   source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)"
   )
 
+flatbread <- tibble(
+  name = "Flat Bread, leftover levain",
+  stage = c(rep("Final fermentation", times = 5)),
+  ingredient = c("whole-wheat flour", "bread flour", "liquid levain",
+                 "salt", "cumin, toasted"),
+  weight = c(7, 7, 32, .5, .2),
+  levain = NA,
+  auto = NA,
+  soaker = NA,
+  bulk = .75,
+  bulktemp = 24,
+  fold = 0,
+  final = 0,
+  finaltemp = 24,
+  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)"
+) 
+
 cookbook <-
   rbind(
     vermont,
@@ -220,6 +237,7 @@ cookbook <-
     wwm,
     pizza,
     ciabatta_biga,
-    mpc
+    mpc,
+    flatbread
   ) |>
   arrange(name)

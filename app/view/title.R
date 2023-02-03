@@ -1,7 +1,8 @@
 
 box::use(
-  shiny[NS, div, tagList, tags, icon, moduleServer],
+  shiny[NS, div, tagList, tags, icon, moduleServer, is.reactive],
   bslib[layout_column_wrap],
+  shinyWidgets[checkboxGroupButtons]
 )
 
 box::use(
@@ -19,23 +20,32 @@ ui <- function(id) {
     ),
     div(
       layout_column_wrap(
-        width = 1/3,
+        width = "100%",
         height = "auto",
         class = "button-menu",
-        toggleButton("sourdough", icon("bacterium")),
-        toggleButton("yeast", icon("cube")),
-        toggleButton("sweet", icon("cookie-bite"))
+        checkboxGroupButtons(
+          inputId = ns("type"),
+          label = NULL, 
+          choices = c(`<i class='fa fa-bacterium'></i>` = "sourdough", 
+                      `<i class='fa fa-cube'></i>` = "yeast", 
+                      `<i class='fa fa-cookie-bite'></i>` = "pastry"),
+          selected = c("sourdough", "yeast", "pastry"),
+          justified = TRUE,
+          individual = TRUE,
+        )
       )
     ) 
   )
 }
 
 #' @export
-server <- function(id) {
+server <- function(id, data) {
   moduleServer(
     id,
     function(input, output, session) {
-      
+      stopifnot(is.reactive(data))
+      data |> 
+        filter(type_sourdough == TRUE )
     }
   )
 }

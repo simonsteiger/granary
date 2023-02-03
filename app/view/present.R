@@ -1,7 +1,7 @@
 
 box::use(
   shiny[moduleServer, NS, reactive, is.reactive, renderUI, htmlOutput, HTML, tags],
-  bslib[card, card_header, card_body],
+  bslib[card, card_header, card_body_fill],
   purrr[map],
 )
 
@@ -31,7 +31,7 @@ server <- function(id, data) {
           class = "bg-dark",
           "Formula"
           ),
-        card_body(
+        card_body_fill(
           height = 200,
           HTML(
             transcribed()

@@ -3,7 +3,7 @@ box::use(
   shiny[moduleServer, NS, reactive, tagList, numericInput, icon],
   shinyWidgets[pickerInput],
   reactable[reactable, renderReactable, reactableOutput],
-  bslib[card, card_header, card_body]
+  bslib[card, card_header, card_body_fill]
 )
 
 box::use(
@@ -20,7 +20,7 @@ ui <- function(id, data) {
       class = "bg-dark",
       "Choice menu"
       ),
-    card_body(
+    card_body_fill(
       tagList(
         pickerInput(
           inputId = ns("formula"),

@@ -1,9 +1,10 @@
 
 box::use(
-  shiny[moduleServer, NS, reactive, tagList, numericInput, icon],
-  shinyWidgets[pickerInput],
+  shiny,
+  shinyWidgets[pickerInput, updatePickerInput],
   reactable[reactable, renderReactable, reactableOutput],
-  bslib[card, card_header, card_body_fill]
+  bslib[card, card_header, card_body_fill],
+  shinyjs[disable],
 )
 
 box::use(
@@ -12,7 +13,7 @@ box::use(
 
 #' @export
 ui <- function(id, data) {
-  ns <- NS(id)
+  ns <- shiny$NS(id)
   card(
     class = "component-box",
     full_screen = TRUE,
@@ -21,7 +22,7 @@ ui <- function(id, data) {
       "Choice menu"
       ),
     card_body_fill(
-      tagList(
+      shiny$tagList(
         pickerInput(
           inputId = ns("formula"),
           label = "Select formula",
@@ -31,9 +32,10 @@ ui <- function(id, data) {
             `live-search-normalize` = TRUE
             )
         ),
-        numericInput(
+        shiny$numericInput(
           inputId = ns("multiplier"),
-          label = "Enter total quantity in grams", value = 1000
+          label = "Enter total quantity in grams", 
+          value = 1000
         )
       )   
     )
@@ -42,9 +44,13 @@ ui <- function(id, data) {
 
 #' @export
 server <- function(id, data) {
-  moduleServer(id, function(input, output, session) {
-    reactive({
-      resize(data, input$formula, input$multiplier)
+  shiny$moduleServer(id, function(input, output, session) {
+    stopifnot(shiny$is.reactive(data))
+    shiny$observe({
+      updatePickerInput(session, "formula", choices = unique(data()$name))
+    })
+    shiny$reactive({
+      resize(data(), input$formula, input$multiplier)
     })
   })
 }

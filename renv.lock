@@ -948,6 +948,19 @@
         "shiny"
       ]
     },
+    "shinysurveys": {
+      "Package": "shinysurveys",
+      "Version": "0.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ddcf62b14c4c6bb28000c96b4b66a07c",
+      "Requirements": [
+        "htmltools",
+        "jsonlite",
+        "sass",
+        "shiny"
+      ]
+    },
     "sourcetools": {
       "Package": "sourcetools",
       "Version": "0.1.7",

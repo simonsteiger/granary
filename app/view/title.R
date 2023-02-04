@@ -1,8 +1,10 @@
 
 box::use(
-  shiny[NS, div, tagList, tags, icon, moduleServer, is.reactive],
+  shiny[NS, div, reactive, is.reactive, tagList, tags, icon, moduleServer],
   bslib[layout_column_wrap],
-  shinyWidgets[checkboxGroupButtons]
+  shinyWidgets[checkboxGroupButtons],
+  dplyr[filter, mutate],
+  stringr[str_detect],
 )
 
 box::use(
@@ -44,8 +46,15 @@ server <- function(id, data) {
     id,
     function(input, output, session) {
       stopifnot(is.reactive(data))
-      data |> 
-        filter(type_sourdough == TRUE )
+      reactive({
+        if (is.null(input$type)) {
+          data() |> 
+            mutate(name = NA)
+        } else {
+          data() |> 
+            filter(str_detect(type, paste0(input$type, collapse = "|")))  
+        }
+      })
     }
   )
 }

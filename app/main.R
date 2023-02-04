@@ -33,7 +33,8 @@ ui <- function(id) {
 #' @export
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    chosen <- formula$server("formula", cookbook)
+    prefiltered <- title$server("title", reactive(cookbook))
+    chosen <- formula$server("formula", prefiltered)
     present$server("present", chosen)
   })
 }

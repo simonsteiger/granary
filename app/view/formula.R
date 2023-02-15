@@ -73,7 +73,12 @@ server <- function(id, data) {
       updatePickerInput(session, "formula", choices = unique(data()$name))
     })
     shiny$reactive({
-      resize(data(), input$formula, input$multiplier)
+      resize(
+        data(),
+        formula = input$formula,
+        multiplier = input$multiplier,
+        .ingredient = input$ingredient,
+        .by = input$toggle)
     })
   })
 }

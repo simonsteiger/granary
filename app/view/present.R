@@ -32,7 +32,7 @@ server <- function(id, data) {
           "Formula"
           ),
         card_body_fill(
-          height = 200,
+          height = 300,
           HTML(
             transcribed()
           )

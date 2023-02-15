@@ -1,18 +1,38 @@
 
 box::use(
-  dplyr[filter, select, mutate, if_else, case_when]
+  dplyr
 )
 
-resize <- function(data, formula, multiplier) {
-  data |>
-    filter(name == formula) |>
-    select(stage, ingredient, weight) |>
-    mutate(
-      weight = weight / sum(weight) * as.numeric(multiplier),
-      weight = case_when(
-        weight < 1 ~ round(weight, 2),
-        weight < 5 ~ round(weight, 1),
-        TRUE ~ round(weight, 0)
+resize <- function(.data, formula, multiplier, .ingredient = NULL, .by) {
+  selected <- 
+    .data |>
+    dplyr$filter(name == formula) |>
+    dplyr$select(stage, ingredient, weight)
+  if (.by == "total") {
+    selected |> 
+      dplyr$mutate(
+        weight = weight / sum(weight) * as.numeric(multiplier),
+        weight = dplyr$case_when(
+          weight < 1 ~ round(weight, 2),
+          weight < 5 ~ round(weight, 1),
+          TRUE ~ round(weight, 0)
+        )
       )
-    )
+  } else {
+    grouped <- selected |>
+      dplyr$group_by(ingredient) |>
+      dplyr$summarise(
+        weight = sum(weight)
+      )
+    ratio <- multiplier/grouped$weight[grouped$ingredient == .ingredient]
+    selected |> 
+      dplyr$mutate(
+        weight = weight * ratio,
+        weight = dplyr$case_when(
+          weight < 1 ~ round(weight, 2),
+          weight < 5 ~ round(weight, 1),
+          TRUE ~ round(weight, 0)
+        )
+      )  
+  }
 }

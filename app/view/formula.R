@@ -1,7 +1,7 @@
 
 box::use(
   shiny,
-  shinyWidgets[pickerInput, updatePickerInput],
+  shinyWidgets[pickerInput, updatePickerInput, prettyRadioButtons],
   reactable[reactable, renderReactable, reactableOutput],
   bslib[card, card_header, card_body_fill],
   shinyjs[disable],
@@ -25,19 +25,42 @@ ui <- function(id, data) {
       shiny$tagList(
         pickerInput(
           inputId = ns("formula"),
-          label = "Select formula",
+          label = "Pick formula",
           choices = unique(data$name),
           options = list(
             `live-search` = TRUE,
             `live-search-normalize` = TRUE
+          )
+        ),
+        prettyRadioButtons(
+          inputId = ns("toggle"),
+          label = "Resize by",
+          status = "primary",
+          shape = "curve",
+          animation = "smooth",
+          plain = TRUE,
+          outline = FALSE,
+          icon = shiny$icon("square-check"),
+          choices = c("total", "ingredient")
+        ),
+        shiny$conditionalPanel(
+          condition = paste0('input[\'', ns('toggle'), "\'] == \'ingredient\'"),
+          pickerInput(
+            inputId = ns("ingredient"),
+            label = "Pick ingredient",
+            choices = unique(data$ingredient),
+            options = list(
+              `live-search` = TRUE,
+              `live-search-normalize` = TRUE
             )
+          )
         ),
         shiny$numericInput(
           inputId = ns("multiplier"),
-          label = "Enter total quantity in grams", 
+          label = "Enter quantity in grams", 
           value = 1000
         )
-      )   
+      )
     )
   )
 }

@@ -24,19 +24,8 @@ server <- function(id, data) {
         transcribe()
     })
     out <- reactive(
-      card(
-        class = "component-box",
-        full_screen = TRUE,
-        card_header(
-          class = "bg-dark",
-          "Formula"
-          ),
-        card_body_fill(
-          height = 300,
-          HTML(
-            transcribed()
-          )
-        )
+      HTML(
+        transcribed()
       )
     )
     output$card <- renderUI({

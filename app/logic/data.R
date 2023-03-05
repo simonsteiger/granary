@@ -237,7 +237,8 @@ flatbread <- tibble(
   source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)"
 ) 
 
-cookbook <-
+#' @export
+recipes <-
   rbind(
     vermont,
     vollkornbrot,

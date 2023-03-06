@@ -22,12 +22,12 @@ ui <- function(id) {
       class = "components-container", 
       title$ui(ns("title")),
       navs_tab_card(
-        sidebar = sidebar(formula$ui(ns("formula"), data$recipes)),
         height = 500,
         full_screen = TRUE,
         wrapper = card_body_fill,
-        nav("Ingredients", present$ui(ns("present"), data$recipes)),
-        nav("Instructions", "You have to be creative for now... ", emo$ji("rainbow"))
+        nav("Filter", formula$ui(ns("formula"), data$recipes)),
+        nav("Recipe", present$ui(ns("present"), data$recipes)),
+        nav("Instruction", "You have to be creative for now... ", emo$ji("rainbow"))
       )
     )
   )

@@ -1,18 +1,19 @@
-
 box::use(
-  shiny[moduleServer, NS, reactive, is.reactive, renderUI, htmlOutput, HTML, tags],
+  shiny[moduleServer, NS, reactive, is.reactive, renderUI, htmlOutput, HTML, tags, tagList],
   bslib[card, card_header, card_body_fill],
   purrr[map],
 )
 
 box::use(
-  app/logic/transcribe[transcribe],
+  app / logic / transcribe[transcribe],
 )
 
 #' @export
-ui <- function(id, data) {
+ui <- function(id) {
   ns <- NS(id)
-  htmlOutput(ns("card"))
+  tagList(
+    htmlOutput(ns("recipe"))
+  )
 }
 
 #' @export
@@ -28,7 +29,7 @@ server <- function(id, data) {
         transcribed()
       )
     )
-    output$card <- renderUI({
+    output$recipe <- renderUI({
       out()
     })
   })

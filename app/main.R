@@ -1,6 +1,6 @@
 box::use(
   shiny[bootstrapPage, moduleServer, reactive, NS, tags, div, icon, HTML],
-  bslib[bs_theme, navs_tab_card, nav, sidebar, card_body_fill, accordion, accordion_panel],
+  bsl = bslib,
   thematic[thematic_on, thematic_shiny, font_spec],
   emo,
 )
@@ -22,13 +22,20 @@ ui <- function(id) {
     div(
       class = "components-container",
       title$ui(ns("title")),
-      navs_tab_card(
-        height = 500,
-        full_screen = TRUE,
-        wrapper = card_body_fill,
-        nav("Filter", filter$ui(ns("formula"), data$data)),
-        nav("Recipe", recipe$ui(ns("present"))),
-        nav("Instruction", instruction$ui(ns("present")))
+      bsl$layout_column_wrap(
+        width = "300px",
+        bsl$card(
+          bsl$card_header(class = "bg-info", "Filter"), 
+          bsl$card_body(filter$ui(ns("formula"), data$data))
+          ),
+        bsl$card(
+          bsl$card_header(class = "bg-info", "Recipe"), 
+          bsl$card_body(recipe$ui(ns("present")))
+        ),
+        bsl$card(
+          bsl$card_header(class = "bg-info", "Instruction"), 
+          bsl$card_body(instruction$ui(ns("present")))
+        )
       )
     )
   )

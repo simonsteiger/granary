@@ -1,6 +1,6 @@
 
 box::use(
-  shiny[tagList, NS, moduleServer, is.reactive, htmlOutput, renderUI, HTML]
+  shiny[tagList, NS, moduleServer, reactive, is.reactive, htmlOutput, renderUI, HTML]
 )
 
 box::use(
@@ -25,9 +25,19 @@ server <- function(id, data) {
     id,
     function(input, output, session) {
       stopifnot(is.reactive(data))
-      output$instruction <- renderUI({
-        HTML(data()$text[[1]])
+      
+      res <- reactive({
+        if (nrow(data()) > 0) {
+          data()$text[[1]]
+        } else {
+          "Trying to bake void?"
+        }  
       })
+      
+      output$instruction <- renderUI({
+        HTML(res())
+      })
+      
     }
   )
 }

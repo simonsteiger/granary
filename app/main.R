@@ -23,14 +23,19 @@ ui <- function(id) {
       class = "components-container",
       title$ui(ns("title")),
       bsl$layout_column_wrap(
-        width = "300px",
-        bsl$card(
-          bsl$card_header(class = "bg-info", "Filter"), 
-          bsl$card_body(filter$ui(ns("formula"), data$data))
+        width = 1/2,
+        fill = FALSE,
+        bsl$layout_column_wrap(
+          width = 1,
+          heights_equal = "row",
+          bsl$card(
+            bsl$card_header(class = "bg-info", "Filter"), 
+            bsl$card_body(filter$ui(ns("formula"), data$data))
           ),
-        bsl$card(
-          bsl$card_header(class = "bg-info", "Recipe"), 
-          bsl$card_body(recipe$ui(ns("present")))
+          bsl$card(
+            bsl$card_header(class = "bg-info", "Recipe"), 
+            bsl$card_body(recipe$ui(ns("present")))
+          )
         ),
         bsl$card(
           bsl$card_header(class = "bg-info", "Instruction"), 

@@ -36,7 +36,7 @@ ui <- function(id) {
           individual = TRUE,
         )
       )
-    ) 
+    )
   )
 }
 

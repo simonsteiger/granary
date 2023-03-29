@@ -1,5 +1,5 @@
 box::use(
-  shiny[bootstrapPage, moduleServer, reactive, NS, tags, div, icon, HTML],
+  shiny[bootstrapPage, moduleServer, reactive, NS, tags, div, icon, HTML, img],
   bsl = bslib,
   thematic[thematic_on, thematic_shiny, font_spec],
   emo,
@@ -21,7 +21,10 @@ ui <- function(id) {
     theme = theme,
     div(
       class = "components-container",
-      title$ui(ns("title")),
+      div(
+        class = "mt-4 d-flex justify-content-center",
+        img(src = "static/granary.png", width = "20%")
+      ),
       bsl$layout_column_wrap(
         width = 1/2,
         fill = FALSE,
@@ -49,8 +52,8 @@ ui <- function(id) {
 #' @export
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    prefiltered <- title$server("title", reactive(data$data))
-    chosen <- filter$server("formula", prefiltered)
+    # prefiltered <- title$server("title", reactive(data$data))
+    chosen <- filter$server("formula", reactive(data$data)) # otherwise pass prefiltered here
     recipe$server("present", chosen)
     instruction$server("present", chosen)
   })

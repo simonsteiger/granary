@@ -1,5 +1,5 @@
 box::use(
-  shiny[bootstrapPage, moduleServer, reactive, NS, tags, div, icon, HTML],
+  shiny[bootstrapPage, moduleServer, reactive, NS, tags, div, icon, HTML, includeHTML],
   bsl = bslib,
   thematic[thematic_on, thematic_shiny, font_spec],
   emo,
@@ -18,6 +18,7 @@ box::use(
 ui <- function(id) {
   ns <- NS(id)
   bootstrapPage(
+    tags$head(includeHTML(("app/static/google-analytics.html"))),
     theme = theme,
     div(
       class = "components-container",

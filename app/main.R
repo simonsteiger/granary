@@ -1,5 +1,5 @@
 box::use(
-  shiny[bootstrapPage, moduleServer, reactive, NS, tags, div, icon, HTML, includeHTML],
+  sh = shiny,
   bsl = bslib,
   thematic[thematic_on, thematic_shiny, font_spec],
   emo,
@@ -11,16 +11,16 @@ box::use(
   app/view/recipe,
   app/view/instruction,
   app/logic/data,
-  app/logic/theme[theme],
+  app/logic/theme,
 )
 
 #' @export
 ui <- function(id) {
-  ns <- NS(id)
-  bootstrapPage(
-    tags$head(includeHTML(("app/static/google-analytics.html"))),
-    theme = theme,
-    div(
+  ns <- sh$NS(id)
+  bsl$page(
+    sh$tags$head(sh$includeHTML(("app/static/google-analytics.html"))),
+    theme = theme$light,
+    sh$div(
       class = "components-container",
       title$ui(ns("title")),
       bsl$layout_column_wrap(
@@ -49,10 +49,13 @@ ui <- function(id) {
 
 #' @export
 server <- function(id) {
-  moduleServer(id, function(input, output, session) {
-    prefiltered <- title$server("title", reactive(data$data))
+  sh$moduleServer(id, function(input, output, session) {
+    prefiltered <- title$server("title", sh$reactive(data$data))
+    
     chosen <- filter$server("formula", prefiltered)
+    
     recipe$server("present", chosen)
+    
     instruction$server("present", chosen)
   })
 }

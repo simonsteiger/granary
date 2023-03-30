@@ -1,6 +1,6 @@
 
 box::use(
-  shiny[NS, div, reactive, is.reactive, tagList, tags, icon, moduleServer],
+  shiny[NS, div, reactive, is.reactive, observe, tagList, tags, icon, moduleServer, checkboxInput],
   bslib[layout_column_wrap],
   shinyWidgets[checkboxGroupButtons],
   dplyr[filter, mutate],
@@ -9,6 +9,7 @@ box::use(
 
 box::use(
   app/logic/toggleButton[toggleButton],
+  app/logic/theme,
 )
 
 #' @export
@@ -34,7 +35,8 @@ ui <- function(id) {
           selected = c("sourdough", "yeast", "pastry"),
           justified = TRUE,
           individual = TRUE,
-        )
+        ),
+        checkboxInput(ns("dark_mode"), "Dark mode"),
       )
     )
   )
@@ -46,6 +48,11 @@ server <- function(id, data) {
     id,
     function(input, output, session) {
       stopifnot(is.reactive(data))
+      
+      observe(session$setCurrentTheme(
+        if (isTRUE(input$dark_mode)) theme$dark else theme$light
+      ))
+      
       reactive({
         if (is.null(input$type)) {
           data() |> 

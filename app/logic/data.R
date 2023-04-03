@@ -94,7 +94,7 @@ semolina <- tibble(
     tags$p("Fold once after 1 hour."),
     tags$hr(),
     tags$h6("5. Final fermentation"),
-    tags$p("2 hours at 76°C, up to 8 hours at 10°C, or up to 18 hours 4°C."),
+    tags$p("2 hours at 24°C, up to 8 hours at 10°C, or up to 18 hours 4°C."),
     tags$hr(),
     tags$h6("6. Baking"),
     tags$p("Bake at 240°C for 45 minutes.")

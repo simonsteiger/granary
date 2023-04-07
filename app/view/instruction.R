@@ -1,6 +1,7 @@
 
 box::use(
-  shiny[tagList, NS, moduleServer, reactive, is.reactive, htmlOutput, renderUI, HTML]
+  shiny[tagList, NS, moduleServer, reactive, is.reactive, htmlOutput, renderUI, HTML],
+  bsl = bslib,
 )
 
 box::use(
@@ -14,8 +15,10 @@ box::use(
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-  tagList(
-    htmlOutput(ns("instruction"))
+  bsl$card(
+    class = "m-8",
+    bsl$card_header(class = "bg-info", "Instruction"), 
+    bsl$card_body_fill(htmlOutput(ns("instruction"), width = "100%"))
   )
 }
 

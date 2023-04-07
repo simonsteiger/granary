@@ -1,5 +1,5 @@
 box::use(
-  shiny[bootstrapPage, moduleServer, reactive, NS, tags, div, icon, HTML, includeHTML],
+  shiny[bootstrapPage, navbarPage, moduleServer, reactive, NS, tags, div, icon, HTML, includeHTML],
   bsl = bslib,
   thematic[thematic_on, thematic_shiny, font_spec],
   emo,
@@ -11,53 +11,53 @@ box::use(
   app/view/recipe,
   app/view/instruction,
   app/logic/data,
-  app/logic/theme[theme],
+  app/logic/theme,
 )
 
 #' @export
 ui <- function(id) {
   ns <- NS(id)
+  tags$head(includeHTML(("app/static/google-analytics.html")))
   bsl$page_navbar(
-    tags$head(includeHTML(("app/static/google-analytics.html"))),
-    theme = theme,
-    title = "granary",
+    window_title = "granary",
+    theme = theme$light,
+    bg = "#fff",
+    position = "fixed-top",
+    fluid = FALSE,
+    collapsible = FALSE,
+    bsl$nav_spacer(),
     bsl$nav(
-      title = "nav1",
-      class = "components-container",
-      # title$ui(ns("title")),
+      title = "Resize",
       bsl$layout_column_wrap(
+        class = "p-2",
         width = 1/2,
+        gap = "1rem",
         fill = FALSE,
-        bsl$layout_column_wrap(
-          width = 1,
-          heights_equal = "row",
-          bsl$card(
-            bsl$card_header(class = "bg-info", "Filter"), 
-            bsl$card_body(filter$ui(ns("formula"), data$data))
-          ),
-          bsl$card(
-            bsl$card_header(class = "bg-info", "Recipe"), 
-            bsl$card_body(recipe$ui(ns("present")))
-          )
-        ),
-        bsl$card(
-          bsl$card_header(class = "bg-info", "Instruction"), 
-          bsl$card_body(instruction$ui(ns("present")))
-        )
+        filter$ui(ns("formula"), data$data),
+        recipe$ui(ns("present"))
+      ),
+      bsl$layout_column_wrap(
+        class = "p-2",
+        width = 1,
+        instruction$ui(ns("present"))  
       )
     ),
+    bsl$nav_item(tags$a(tags$img(src = "static/granary.png", height = "100px"))),
     bsl$nav(
-      title = "nav2"
-    )
+      title = "Overview"
+    ),
+    bsl$nav_spacer()
   )
 }
 
 #' @export
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    # prefiltered <- title$server("title", reactive(data$data))
+    
     chosen <- filter$server("formula", reactive(data$data))
+    
     recipe$server("present", chosen)
+    
     instruction$server("present", chosen)
   })
 }

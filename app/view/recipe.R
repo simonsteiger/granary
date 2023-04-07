@@ -1,6 +1,6 @@
 box::use(
   shiny[moduleServer, NS, reactive, is.reactive, renderUI, htmlOutput, HTML, tags, tagList],
-  bslib[card, card_header, card_body_fill],
+  bsl = bslib,
   purrr[map],
 )
 
@@ -11,8 +11,10 @@ box::use(
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-  tagList(
-    htmlOutput(ns("recipe"))
+  bsl$card(
+    class = "m-8",
+    bsl$card_header(class = "bg-info", "Recipe"), 
+    bsl$card_body_fill(htmlOutput(ns("recipe"), width = "100%"))
   )
 }
 

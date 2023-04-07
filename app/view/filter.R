@@ -3,7 +3,7 @@ box::use(
   shiny,
   shinyWidgets[pickerInput, updatePickerInput, prettyRadioButtons],
   reactable[reactable, renderReactable, reactableOutput],
-  bslib[accordion, accordion_panel],
+  bsl = bslib,
   bsicons[bs_icon],
   shinyjs[disable],
 )
@@ -16,10 +16,14 @@ box::use(
 #' @export
 ui <- function(id, data) {
   ns <- shiny$NS(id)
-  shiny$tagList(
-    pick_formula(ns("formula"), unique(data$name)),
-    toggle_resizeby(ns("toggle"), ns("ingredient")),
-    numeric_multiplier(ns("multiplier"))
+  bsl$card(
+    class = "m-8",
+    bsl$card_header(class = "bg-info", "Filter"), 
+    bsl$card_body_fill(
+      pick_formula(ns("formula"), unique(data$name)),
+      toggle_resizeby(ns("toggle"), ns("ingredient")),
+      numeric_multiplier(ns("multiplier"))
+    )
   )
 }
 

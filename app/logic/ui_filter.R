@@ -27,11 +27,9 @@ toggle_resizeby <- function(id_main, id_cond) {
       inputId = id_main,
       label = "Resize by",
       status = "primary",
-      shape = "curve",
+      shape = "round",
       animation = "smooth",
-      plain = TRUE,
-      outline = FALSE,
-      icon = shiny$icon("square-check"),
+      outline = TRUE,
       choices = c("total", "ingredient")
     ),
     shiny$conditionalPanel(

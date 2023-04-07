@@ -17,42 +17,55 @@ box::use(
 #' @export
 ui <- function(id) {
   ns <- sh$NS(id)
-  bsl$page(
+  bsl$page_navbar(
+    title = "granary",
     sh$tags$head(sh$includeHTML(("app/static/google-analytics.html"))),
     theme = theme$light,
-    sh$div(
-      class = "components-container",
-      title$ui(ns("title")),
-      bsl$layout_column_wrap(
-        width = 1/2,
-        fill = FALSE,
+    bsl$nav(
+      title = "resize",
+      sh$div(
+        class = "components-container",
+        # title$ui(ns("title")),
         bsl$layout_column_wrap(
-          width = 1,
-          heights_equal = "row",
-          bsl$card(
-            bsl$card_header(class = "bg-secondary", "Filter"), 
-            bsl$card_body(filter$ui(ns("formula"), data$data))
+          width = 1/2,
+          fill = FALSE,
+          bsl$layout_column_wrap(
+            width = 1,
+            heights_equal = "row",
+            bsl$card(
+              bsl$card_header(class = "bg-secondary", "Filter"), 
+              bsl$card_body(filter$ui(ns("formula"), data$data))
+            ),
+            bsl$card(
+              bsl$card_header(class = "bg-secondary", "Recipe"), 
+              bsl$card_body(recipe$ui(ns("present")))
+            )
           ),
           bsl$card(
-            bsl$card_header(class = "bg-secondary", "Recipe"), 
-            bsl$card_body(recipe$ui(ns("present")))
+            bsl$card_header(class = "bg-secondary", "Instruction"), 
+            bsl$card_body(instruction$ui(ns("present")))
           )
-        ),
-        bsl$card(
-          bsl$card_header(class = "bg-secondary", "Instruction"), 
-          bsl$card_body(instruction$ui(ns("present")))
         )
-      )
+      )  
+    ),
+    bsl$nav(
+      title = "overview"
     )
+    # ,
+    # footer = sh$checkboxInput(ns("dark_mode"), "Dark mode")
   )
 }
 
 #' @export
 server <- function(id) {
   sh$moduleServer(id, function(input, output, session) {
-    prefiltered <- title$server("title", sh$reactive(data$data))
+    # prefiltered <- title$server("title", sh$reactive(data$data))
     
-    chosen <- filter$server("formula", prefiltered)
+    sh$observe(session$setCurrentTheme(
+      if (isTRUE(input$dark_mode)) theme$dark else theme$light
+    ))
+    
+    chosen <- filter$server("formula", sh$reactive(data$data))
     
     recipe$server("present", chosen)
     

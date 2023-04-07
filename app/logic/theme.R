@@ -4,7 +4,7 @@ box::use(
 )
 
 theme <-  bs_theme(
-  version = 5,
+  version = 5L,
   bg = "#ffffff",
   fg = "#565b85",
   primary = "#E0A969",

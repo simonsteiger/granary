@@ -17,12 +17,14 @@ box::use(
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-  bootstrapPage(
+  bsl$page_navbar(
     tags$head(includeHTML(("app/static/google-analytics.html"))),
     theme = theme,
-    div(
+    title = "granary",
+    bsl$nav(
+      title = "nav1",
       class = "components-container",
-      title$ui(ns("title")),
+      # title$ui(ns("title")),
       bsl$layout_column_wrap(
         width = 1/2,
         fill = FALSE,
@@ -43,6 +45,9 @@ ui <- function(id) {
           bsl$card_body(instruction$ui(ns("present")))
         )
       )
+    ),
+    bsl$nav(
+      title = "nav2"
     )
   )
 }
@@ -50,8 +55,8 @@ ui <- function(id) {
 #' @export
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    prefiltered <- title$server("title", reactive(data$data))
-    chosen <- filter$server("formula", prefiltered)
+    # prefiltered <- title$server("title", reactive(data$data))
+    chosen <- filter$server("formula", reactive(data$data))
     recipe$server("present", chosen)
     instruction$server("present", chosen)
   })

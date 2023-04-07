@@ -30,16 +30,16 @@ ui <- function(id) {
           width = 1,
           heights_equal = "row",
           bsl$card(
-            bsl$card_header(class = "bg-info", "Filter"), 
+            bsl$card_header(class = "bg-secondary", "Filter"), 
             bsl$card_body(filter$ui(ns("formula"), data$data))
           ),
           bsl$card(
-            bsl$card_header(class = "bg-info", "Recipe"), 
+            bsl$card_header(class = "bg-secondary", "Recipe"), 
             bsl$card_body(recipe$ui(ns("present")))
           )
         ),
         bsl$card(
-          bsl$card_header(class = "bg-info", "Instruction"), 
+          bsl$card_header(class = "bg-secondary", "Instruction"), 
           bsl$card_body(instruction$ui(ns("present")))
         )
       )

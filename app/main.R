@@ -1,8 +1,6 @@
 box::use(
-  shiny[bootstrapPage, navbarPage, moduleServer, reactive, NS, tags, div, icon, HTML, includeHTML],
+  sh = shiny,
   bsl = bslib,
-  thematic[thematic_on, thematic_shiny, font_spec],
-  emo,
 )
 
 box::use(
@@ -16,33 +14,34 @@ box::use(
 
 #' @export
 ui <- function(id) {
-  ns <- NS(id)
-  tags$head(includeHTML(("app/static/google-analytics.html")))
+  ns <- sh$NS(id)
+  sh$tags$head(sh$includeHTML(("app/static/google-analytics.html")))
   bsl$page_navbar(
     window_title = "granary",
     theme = theme$light,
     bg = "#fff",
     position = "fixed-top",
     fluid = FALSE,
-    collapsible = FALSE,
     bsl$nav_spacer(),
     bsl$nav(
       title = "Resize",
       bsl$layout_column_wrap(
-        class = "p-2",
-        width = 1/2,
+        class = "p-2 justify-content-center",
+        width = "16rem",
         gap = "1rem",
         fill = FALSE,
+        fixed_width = TRUE,
         filter$ui(ns("formula"), data$data),
         recipe$ui(ns("present"))
       ),
       bsl$layout_column_wrap(
-        class = "p-2",
-        width = 1,
+        class = "p-2 justify-content-center",
+        width = "33rem",
+        fixed_width = TRUE,
         instruction$ui(ns("present"))  
       )
     ),
-    bsl$nav_item(tags$a(tags$img(src = "static/granary.png", height = "100px"))),
+    bsl$nav_item(sh$tags$a(sh$tags$img(src = "static/granary.png", height = "100px"))),
     bsl$nav(
       title = "Overview"
     ),
@@ -52,9 +51,9 @@ ui <- function(id) {
 
 #' @export
 server <- function(id) {
-  moduleServer(id, function(input, output, session) {
+  sh$moduleServer(id, function(input, output, session) {
     
-    chosen <- filter$server("formula", reactive(data$data))
+    chosen <- filter$server("formula", sh$reactive(data$data))
     
     recipe$server("present", chosen)
     

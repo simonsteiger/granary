@@ -1,15 +1,14 @@
 
 box::use(
-  shiny,
-  shinyWidgets[pickerInput, updatePickerInput, prettyRadioButtons],
+  sh = shiny,
+  shw = shinyWidgets,
   reactable[reactable, renderReactable, reactableOutput],
   bslib[card, card_header, card_body_fill],
-  shinyjs[disable],
 )
 
 #' @export
 pick_formula <- function(id, choices) { # unique(data$name)
-  pickerInput(
+  shw$pickerInput(
     inputId = id,
     label = "Pick formula",
     choices = choices,
@@ -22,8 +21,8 @@ pick_formula <- function(id, choices) { # unique(data$name)
 
 #' @export
 toggle_resizeby <- function(id_main, id_cond) { 
-  shiny$tagList(
-    prettyRadioButtons(
+  sh$tagList(
+    shw$prettyRadioButtons(
       inputId = id_main,
       label = "Resize by",
       status = "primary",
@@ -32,9 +31,9 @@ toggle_resizeby <- function(id_main, id_cond) {
       outline = TRUE,
       choices = c("total", "ingredient")
     ),
-    shiny$conditionalPanel(
+    sh$conditionalPanel(
       condition = paste0('input[\'', id_main, "\'] == \'ingredient\'"),
-      pickerInput(
+      shw$pickerInput(
         inputId = id_cond,
         label = "Pick ingredient",
         choices = NULL, # need updateUI with unique(cur_data$ingredient)
@@ -49,7 +48,7 @@ toggle_resizeby <- function(id_main, id_cond) {
 
 #' @export
 numeric_multiplier <- function(id) {
-  shiny$numericInput(
+  sh$numericInput(
     inputId = id,
     label = "Enter quantity in grams", 
     value = 1000

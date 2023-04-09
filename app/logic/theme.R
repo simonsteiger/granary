@@ -1,10 +1,10 @@
 
 box::use(
-  bslib[bs_theme, font_google],
+  bsl = bslib,
 )
 
 #' @export
-light <- bs_theme(
+light <- bsl$bs_theme(
   version = 5,
   bg = "#ffffff",
   fg = "#565b85",
@@ -14,13 +14,13 @@ light <- bs_theme(
   info = "#e8e9f3",
   warning = "#c26130",
   danger = "#FF00E3",
-  base_font = font_google("Fira Sans"),
-  heading_font = font_google("Fira Sans"),
-  code_font = font_google("Fira Sans")
+  base_font = bsl$font_google("Fira Sans"),
+  heading_font = bsl$font_google("Fira Sans"),
+  code_font = bsl$font_google("Fira Sans")
 )
 
 #' @export
-dark <- bs_theme(
+dark <- bsl$bs_theme(
   version = 5,
   bg = "#35363A",
   fg = "#CDCDCD",
@@ -30,9 +30,9 @@ dark <- bs_theme(
   info = "#202124",
   warning = "#c26130",
   danger = "#FF00E3",
-  base_font = font_google("Fira Sans"),
-  heading_font = font_google("Fira Sans"),
-  code_font = font_google("Fira Sans")
+  base_font = bsl$font_google("Fira Sans"),
+  heading_font = bsl$font_google("Fira Sans"),
+  code_font = bsl$font_google("Fira Sans")
 )
 
 #E0A969

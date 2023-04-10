@@ -1,20 +1,46 @@
 
 box::use(
+  magrittr[`%>%`],
   sh = shiny,
   shw = shinyWidgets,
   bsl = bslib,
   bsi = bsicons,
   pr = purrr,
   dp = dplyr,
+  str = stringr,
 )
 
 #' @export
-pick_formula <- function(id, choices) { # unique(data$name)
+grouped_choices <- function(data) {
+  unique_recipes <- dp$distinct(data, name, tags)
+  
+  rye <- unique_recipes %>% 
+    dp$filter(str$str_detect(tags, "sourdough")) %>% 
+    dp$pull(name)
+  
+  wheat <- unique_recipes %>% 
+    dp$filter(str$str_detect(tags, "levain")) %>% 
+    dp$pull(name)
+  
+  yeast <- unique_recipes %>% 
+    dp$filter(str$str_detect(tags, "yeast|poolish|biga")) %>% 
+    dp$pull(name)
+  
+  list(
+    Yeast = yeast,
+    Levain = wheat,
+    Sourdough = rye
+    )
+}
+
+#' @export
+pick_formula <- function(id, data) {
   shw$pickerInput(
     inputId = id,
     label = "Pick formula",
-    choices = choices,
+    choices = grouped_choices(data),
     options = list(
+      size = 4,
       `live-search` = TRUE,
       `live-search-normalize` = TRUE
     )
@@ -57,19 +83,18 @@ numeric_multiplier <- function(id) {
   )  
 }
 
-#' @export
 box_overview <- function(row) {
-  type <- switch(row$type,
-                 "sourdough" = bsi$bs_icon("bug"),
-                 "yeast" = bsi$bs_icon("box"),
-                 "misc" = bsi$bs_icon("lightbulb"),
-                 stop("Unknown type")
+  tags <- switch(row$tags,
+                 "sourdough" = bsi$bs_icon("bookmark"),
+                 "yeast" = bsi$bs_icon("bookmark"),
+                 "misc" = bsi$bs_icon("bookmark"),
+                 stop("Unknown tags")
                  )
   
   bsl$value_box(
-    title = row$type,
+    title = row$tags,
     value = row$name,
-    showcase = type,
+    showcase = tags,
     showcase_layout = bsl$showcase_top_right(),
     theme_color = "secondary",
     sh$p("by Jeffrey Hamelman"),
@@ -78,10 +103,19 @@ box_overview <- function(row) {
 
 #' @export
 box_map <- function(data) {
-  recipe_data <- dp$distinct(data, name, type)
+  recipe_data <- dp$distinct(data, name, tags)
   
   pr$map(
     seq_len(nrow(recipe_data)),
-    ~ box_overview(recipe_data[.x, ])
+    ~ box_recipe(recipe_data[.x, ])
+  )
+}
+
+#' @export
+box_recipe <- function(data) {
+  sh$div(
+    class = "recipe",
+    sh$h3(class = "name", data$name),
+    sh$div(class = "tags", data$tags)
   )
 }

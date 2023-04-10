@@ -8,7 +8,7 @@ box::use(
 
 vermont <- tbl$tibble(
   name = "Vermont sourdough",
-  type = "sourdough",
+  tags = "liquid levain",
   stage = c(rep("Autolysis", times = 3), "Final fermentation", rep("Levain", times = 3)),
   ingredient = c("bread flour", "whole-rye flour", "water", "salt", "bread flour", "water", "mature culture"),
   weight = c(6.5, 1.5, 4, 0.19, 2, 2.5, 0.4),
@@ -34,13 +34,12 @@ vermont <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("6. Baking"),
     sh$tags$p("Bake at 240°C for 45 minutes.")
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)",
+  )
 )
 
 vollkornbrot <- tbl$tibble(
   name = "Vollkornbrot",
-  type = "sourdough",
+  tags = "sourdough;soaker;keeps well",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 2)),
   ingredient = c("whole-rye flour", "water", "salt", "yeast", "sunflower seeds", "whole-rye flour", "water", "mature culture", "rye chops", "water"),
   weight = c(2.73, 0.94, 0.2, 0.18, 0.55, 4.11, 4.11, 0.206, 3.16, 3.16),
@@ -65,13 +64,12 @@ vollkornbrot <- tbl$tibble(
       "Bake at 240°C for 15 minutes, then lower to 195°C for 75 minutes. 
       High water content requires a full bake."
       )
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)",
+  )
 )
 
 semolina <- tbl$tibble(
   name = "Semolina Bread",
-  type = "sourdough",
+  tags = "liquid levain",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
   ingredient = c(
     "bread flour", "durum flour", "water", "toasted sesame", "salt", "bread flour",
@@ -99,13 +97,12 @@ semolina <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("6. Baking"),
     sh$tags$p("Bake at 240°C for 45 minutes.")
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)",
+  )
 )
 
 brioche <- tbl$tibble(
-  name = "Hamelman's Brioche",
-  type = "misc",
+  name = "Classic Brioche",
+  tags = "yeast;enriched",
   stage = "Final fermentation",
   ingredient = c("bread flour", "manitoba flour", "water", "eggs", "salt", "sugar", "yeast", "butter"),
   weight = c(200, 200, 36, 200, 10, 48, 20, 200),
@@ -129,13 +126,12 @@ brioche <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("6. Baking"),
     sh$tags$p("Bake at 195°C for 35 minutes.")
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)",
+  )
 )
 
 olivelevain <- tbl$tibble(
   name = "Olive Levain",
-  type = "sourdough",
+  tags = "liquid levain",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
   ingredient = c(
     "bread flour", "whole-wheat flour", "water", "salt", "olives",
@@ -164,13 +160,12 @@ olivelevain <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("6. Baking"),
     sh$tags$p("Bake at 240°C for 45 minutes.")
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)",
+  )
 )
 
 fivegrain <- tbl$tibble(
   name = "Fivegrain Levain",
-  type = "sourdough",
+  tags = "liquid levain;soaker;keeps well",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 6)),
   ingredient = c(
     "yeast", "bread flour", "whole-wheat flour", "water", "salt", "bread flour",
@@ -207,13 +202,12 @@ fivegrain <- tbl$tibble(
       "Bake at 240°C for 45 minutes. 
       High water content requires a full bake."
       )
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)",
+  )
 )
 
 pal_m <- tbl$tibble(
-  name = "Pain au Levain, mixed starters",
-  type = "sourdough",
+  name = "Pain au Levain",
+  tags = "liquid levain;sourdough",
   stage = c(rep("Final fermentation", times = 4), rep("Levain", times = 6)),
   ingredient = c(
     "bread flour", "whole-wheat flour", "water", "salt",
@@ -246,13 +240,12 @@ pal_m <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("7. Baking"),
     sh$tags$p("Bake at 240°C for 45 minutes.")
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)",
+  )
 )
 
 wwm <- tbl$tibble(
   name = "Whole-wheat Multigrain",
-  type = "sourdough",
+  tags = "liquid levain;soaker;keeps well",
   stage = c(rep("Final fermentation", times = 6), rep("Levain", times = 3), rep("Soaker", times = 2)),
   ingredient = c(
     "bread flour", "whole-wheat flour", "water", "salt", "yeast", "honey",
@@ -287,13 +280,12 @@ wwm <- tbl$tibble(
       "Bake at 240°C for 45 minutes. 
       High water content requires a full bake."
       )
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)",
+  )
 )
 
 pry <- tbl$tibble(
-  name = "Pain Rustique, yeast",
-  type = "yeast",
+  name = "Pain Rustique",
+  tags = "poolish",
   stage = c(rep("Final fermentation", times = 4), rep("Poolish", times = 3)),
   ingredient = c(
     "bread flour", "water", "salt", "yeast",
@@ -322,13 +314,12 @@ pry <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("6. Baking"),
     sh$tags$p("Bake at 240°C for 45 minutes.")
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)"
+  )
 )
 
 pizza <- tbl$tibble(
-  name = "Pizza, yeast",
-  type = "yeast",
+  name = "Pizza",
+  tags = "biga",
   stage = c(rep("Final fermentation", times = 5), rep("Biga", times = 3)),
   ingredient = c(
     "bread flour", "water", "salt", "yeast", "evoo",
@@ -358,13 +349,12 @@ pizza <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("6. Baking"),
     sh$tags$p("Very. Hot.", emo$ji("fire"))
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)"
+  )
 )
 
 ciabatta_biga <- tbl$tibble(
-  name = "Ciabatta, biga",
-  type = "yeast",
+  name = "Ciabatta",
+  tags = "biga",
   stage = c(rep("Final fermentation", times = 4), rep("Biga", times = 3)),
   ingredient = c(
     "bread flour", "water", "salt", "yeast",
@@ -393,13 +383,12 @@ ciabatta_biga <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("6. Baking"),
     sh$tags$p("Bake for 40 minutes at 240°C.")
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)"
+  )
 )
 
 mpc <- tbl$tibble(
   name = "Miche Pointe à Callière",
-  type = "sourdough",
+  tags = "stiff levain;keeps well",
   stage = c(rep("Final fermentation", times = 3), rep("Levain", times = 3)),
   ingredient = c(
     "high extraction wheat flour", "water", "salt",
@@ -431,13 +420,12 @@ mpc <- tbl$tibble(
       "Bake at 225°C for 15 minutes, then lower to 215°C for 45 minutes.
       High water content requires a full bake."
     )
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)"
+  )
 )
 
 flatbread <- tbl$tibble(
-  name = "Flat Bread, leftover levain",
-  type = "sourdough",
+  name = "Flat Bread",
+  tags = "leftover levain",
   stage = c(rep("Final fermentation", times = 5)),
   ingredient = c(
     "whole-wheat flour", "bread flour", "liquid levain",
@@ -455,8 +443,7 @@ flatbread <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("3. Frying"),
     sh$tags$p("Fry in a skillet until crispy.")
-  ),
-  source = "Bread: a baker's book of techniques and recipes (Jeffrey Hamelman)"
+  )
 )
 
 #' @export

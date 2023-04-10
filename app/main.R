@@ -1,4 +1,6 @@
 box::use(
+  magrittr[`%>%`],
+  sass,
   sh = shiny,
   bsl = bslib,
 )
@@ -20,7 +22,8 @@ ui <- function(id) {
   sh$tags$head(sh$includeHTML(("app/static/google-analytics.html")))
   bsl$page_navbar(
     window_title = "granary",
-    theme = theme$light,
+    theme = theme$light %>% 
+      bsl$bs_add_rules(sass$sass_file("app/styles/recipe.scss")),
     bg = "#fff",
     position = "fixed-top",
     fluid = FALSE,
@@ -46,6 +49,7 @@ ui <- function(id) {
     bsl$nav_item(sh$tags$a(sh$tags$img(src = "static/granary.png", height = "100px"))),
     bsl$nav(
       title = "Overview",
+      sh$h2(class = "d-flex justify-content-center", "Work in progess"),
       bsl$layout_column_wrap(
         width = "300px",
         # fixed_width = TRUE,

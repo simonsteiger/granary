@@ -49,11 +49,10 @@ ui <- function(id) {
     bsl$nav_item(sh$tags$a(sh$tags$img(src = "static/granary.png", height = "100px"))),
     bsl$nav(
       title = "Overview",
-      sh$h2(class = "d-flex justify-content-center", "Work in progess"),
-      bsl$layout_column_wrap(
-        width = "300px",
-        # fixed_width = TRUE,
-        !!!fn_ui$box_map(data$data)
+      sh$h2(class = "d-flex justify-content-center align-items-center", "Work in progess"),
+      sh$div(
+        class = "d-flex flex-wrap align-items-center justify-content-center",
+        !!!fn_ui$box_map(data$data) 
       )
     ),
     bsl$nav_spacer()

@@ -51,7 +51,7 @@ ui <- function(id) {
       title = "Overview",
       sh$h2(class = "d-flex justify-content-center align-items-center", "Work in progess"),
       sh$div(
-        class = "d-flex flex-wrap align-items-center justify-content-center",
+        class = "d-flex flex-wrap align-items-stretch justify-content-center",
         !!!fn_ui$box_map(data$data) 
       )
     ),

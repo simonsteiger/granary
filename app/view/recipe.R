@@ -1,35 +1,37 @@
 box::use(
-  shiny[moduleServer, NS, reactive, is.reactive, renderUI, htmlOutput, HTML, tags, tagList],
-  bslib[card, card_header, card_body_fill],
-  purrr[map],
+  magrittr[`%>%`],
+  sh = shiny,
+  bsl = bslib,
 )
 
 box::use(
-  app / logic / transcribe[transcribe],
+  fn_sv = app/logic/fn_server,
 )
 
 #' @export
 ui <- function(id) {
-  ns <- NS(id)
-  tagList(
-    htmlOutput(ns("recipe"))
+  ns <- sh$NS(id)
+  bsl$card(
+    class = "m-8",
+    bsl$card_header(class = "bg-info", "Recipe"), 
+    bsl$card_body_fill(sh$htmlOutput(ns("recipe"), width = "100%"))
   )
 }
 
 #' @export
 server <- function(id, data) {
-  moduleServer(id, function(input, output, session) {
-    stopifnot(is.reactive(data))
-    transcribed <- reactive({
-      data() |>
-        transcribe()
+  sh$moduleServer(id, function(input, output, session) {
+    stopifnot(sh$is.reactive(data))
+    transcribed <- sh$reactive({
+      data() %>%
+        fn_sv$transcribe()
     })
-    out <- reactive(
-      HTML(
+    out <- sh$reactive(
+      sh$HTML(
         transcribed()
       )
     )
-    output$recipe <- renderUI({
+    output$recipe <- sh$renderUI({
       out()
     })
   })

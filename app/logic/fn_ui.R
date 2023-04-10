@@ -2,8 +2,10 @@
 box::use(
   sh = shiny,
   shw = shinyWidgets,
-  reactable[reactable, renderReactable, reactableOutput],
-  bslib[card, card_header, card_body_fill],
+  bsl = bslib,
+  bsi = bsicons,
+  pr = purrr,
+  dp = dplyr,
 )
 
 #' @export
@@ -36,7 +38,7 @@ toggle_resizeby <- function(id_main, id_cond) {
       shw$pickerInput(
         inputId = id_cond,
         label = "Pick ingredient",
-        choices = NULL, # need updateUI with unique(cur_data$ingredient)
+        choices = NULL,
         options = list(
           `live-search` = TRUE,
           `live-search-normalize` = TRUE
@@ -55,3 +57,31 @@ numeric_multiplier <- function(id) {
   )  
 }
 
+#' @export
+box_overview <- function(row) {
+  type <- switch(row$type,
+                 "sourdough" = bsi$bs_icon("bug"),
+                 "yeast" = bsi$bs_icon("box"),
+                 "misc" = bsi$bs_icon("lightbulb"),
+                 stop("Unknown type")
+                 )
+  
+  bsl$value_box(
+    title = row$type,
+    value = row$name,
+    showcase = type,
+    showcase_layout = bsl$showcase_top_right(),
+    theme_color = "secondary",
+    sh$p("by Jeffrey Hamelman"),
+  )
+}
+
+#' @export
+box_map <- function(data) {
+  recipe_data <- dp$distinct(data, name, type)
+  
+  pr$map(
+    seq_len(nrow(recipe_data)),
+    ~ box_overview(recipe_data[.x, ])
+  )
+}

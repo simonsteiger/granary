@@ -8,8 +8,10 @@ box::use(
   app/view/filter,
   app/view/recipe,
   app/view/instruction,
+  # app/view/overview,
   app/logic/data,
   app/logic/theme,
+  app/logic/fn_ui,
 )
 
 #' @export
@@ -43,7 +45,12 @@ ui <- function(id) {
     ),
     bsl$nav_item(sh$tags$a(sh$tags$img(src = "static/granary.png", height = "100px"))),
     bsl$nav(
-      title = "Overview"
+      title = "Overview",
+      bsl$layout_column_wrap(
+        width = "300px",
+        # fixed_width = TRUE,
+        !!!fn_ui$box_map(data$data)
+      )
     ),
     bsl$nav_spacer()
   )
@@ -52,7 +59,6 @@ ui <- function(id) {
 #' @export
 server <- function(id) {
   sh$moduleServer(id, function(input, output, session) {
-    
     chosen <- filter$server("formula", sh$reactive(data$data))
     
     recipe$server("present", chosen)

@@ -1,4 +1,5 @@
 box::use(
+  magrittr[`%>%`],
   tbl = tibble,
   dp = dplyr,
   sh = shiny,
@@ -39,7 +40,7 @@ vermont <- tbl$tibble(
 
 vollkornbrot <- tbl$tibble(
   name = "Vollkornbrot",
-  type = "sourdough,yeast",
+  type = "sourdough",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 2)),
   ingredient = c("whole-rye flour", "water", "salt", "yeast", "sunflower seeds", "whole-rye flour", "water", "mature culture", "rye chops", "water"),
   weight = c(2.73, 0.94, 0.2, 0.18, 0.55, 4.11, 4.11, 0.206, 3.16, 3.16),
@@ -104,7 +105,7 @@ semolina <- tbl$tibble(
 
 brioche <- tbl$tibble(
   name = "Hamelman's Brioche",
-  type = "pastry,yeast",
+  type = "misc",
   stage = "Final fermentation",
   ingredient = c("bread flour", "manitoba flour", "water", "eggs", "salt", "sugar", "yeast", "butter"),
   weight = c(200, 200, 36, 200, 10, 48, 20, 200),
@@ -169,7 +170,7 @@ olivelevain <- tbl$tibble(
 
 fivegrain <- tbl$tibble(
   name = "Fivegrain Levain",
-  type = "sourdough,yeast",
+  type = "sourdough",
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 6)),
   ingredient = c(
     "yeast", "bread flour", "whole-wheat flour", "water", "salt", "bread flour",
@@ -474,5 +475,5 @@ data <-
     ciabatta_biga,
     mpc,
     flatbread
-  ) |>
+  ) %>%
   dp$arrange(name)

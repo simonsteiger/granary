@@ -1,0 +1,25 @@
+.recipe {
+  display: inline-block;
+  padding: $spacer;
+  border: $border-width solid $border-color;
+  @include border-radius;
+  @include box-shadow;
+  outline: 0;
+  width: 300px;
+  .tags {
+    //background-color: $secondary;
+    border-radius: 20px;
+    color: $gray-600;
+  }
+  margin: $grid-gutter-width;
+  margin-right: 0;
+  // On mobile, span entire width
+  @include media-breakpoint-down(sm) {
+    display: block;
+    width: auto;
+    margin-right: $grid-gutter-width;
+  }
+}
+.recipe:last-of-type {
+  margin-right: $grid-gutter-width;
+}

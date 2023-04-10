@@ -17,7 +17,7 @@ ui <- function(id, data) {
     class = "m-8",
     bsl$card_header(class = "bg-info", "Filter"), 
     bsl$card_body_fill(
-      fn_ui$pick_formula(ns("formula"), unique(data$name)),
+      fn_ui$pick_formula(ns("formula"), data),
       fn_ui$toggle_resizeby(ns("toggle"), ns("ingredient")),
       fn_ui$numeric_multiplier(ns("multiplier"))
     )
@@ -29,9 +29,9 @@ server <- function(id, data) {
   sh$moduleServer(id, function(input, output, session) {
     stopifnot(sh$is.reactive(data))
     
-    sh$observe({
-      shw$updatePickerInput(session, "formula", choices = unique(data()$name))
-    })
+    # sh$observe({
+    #   shw$updatePickerInput(session, "formula", choices = unique(data()$name))
+    # })
     
     sh$observe({
       shw$updatePickerInput(

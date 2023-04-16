@@ -10,20 +10,24 @@ box::use(
   str = stringr,
 )
 
+list2atom <- function(x) {
+  unlist(paste0(x, collapse = ""))
+}
+
 #' @export
 grouped_choices <- function(data) {
   unique_recipes <- dp$distinct(data, name, tags)
   
   rye <- unique_recipes %>% 
-    dp$filter(str$str_detect(tags, "sourdough")) %>% 
+    dp$filter(str$str_detect(list2atom(tags), "sourdough")) %>% 
     dp$pull(name)
   
   wheat <- unique_recipes %>% 
-    dp$filter(str$str_detect(tags, "levain")) %>% 
+    dp$filter(str$str_detect(list2atom(tags), "levain")) %>% 
     dp$pull(name)
   
   yeast <- unique_recipes %>% 
-    dp$filter(str$str_detect(tags, "yeast|poolish|biga")) %>% 
+    dp$filter(str$str_detect(list2atom(tags), "yeast|poolish|biga")) %>% 
     dp$pull(name)
   
   list(
@@ -116,6 +120,12 @@ box_recipe <- function(data) {
   sh$div(
     class = "recipe",
     sh$h3(class = "name", data$name),
-    sh$div(class = "tags", data$tags)
+    sh$div(
+      class = "d-flex flex-wrap",
+      pr$map(
+        pr$list_flatten(data$tags),
+        ~ sh$div(class = "tags", .x)
+        )
+      )
   )
 }

@@ -8,7 +8,7 @@ box::use(
 
 vermont <- tbl$tibble(
   name = "Vermont sourdough",
-  tags = "liquid levain",
+  tags = list("liquid levain"),
   stage = c(rep("Autolysis", times = 3), "Final fermentation", rep("Levain", times = 3)),
   ingredient = c("bread flour", "whole-rye flour", "water", "salt", "bread flour", "water", "mature culture"),
   weight = c(6.5, 1.5, 4, 0.19, 2, 2.5, 0.4),
@@ -39,7 +39,7 @@ vermont <- tbl$tibble(
 
 vollkornbrot <- tbl$tibble(
   name = "Vollkornbrot",
-  tags = "sourdough;soaker;keeps well",
+  tags = list(list("sourdough", "soaker", "keeps well")),
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 2)),
   ingredient = c("whole-rye flour", "water", "salt", "yeast", "sunflower seeds", "whole-rye flour", "water", "mature culture", "rye chops", "water"),
   weight = c(2.73, 0.94, 0.2, 0.18, 0.55, 4.11, 4.11, 0.206, 3.16, 3.16),
@@ -61,15 +61,15 @@ vollkornbrot <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("6. Baking"),
     sh$tags$p(
-      "Bake at 240°C for 15 minutes, then lower to 195°C for 75 minutes. 
+      "Bake at 240°C for 15 minutes, then lower to 195°C for 75 minutes.
       High water content requires a full bake."
-      )
+    )
   )
 )
 
 semolina <- tbl$tibble(
   name = "Semolina Bread",
-  tags = "liquid levain",
+  tags = list("liquid levain"),
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
   ingredient = c(
     "bread flour", "durum flour", "water", "toasted sesame", "salt", "bread flour",
@@ -102,7 +102,7 @@ semolina <- tbl$tibble(
 
 brioche <- tbl$tibble(
   name = "Classic Brioche",
-  tags = "yeast;enriched",
+  tags = list(list("yeast", "enriched")),
   stage = "Final fermentation",
   ingredient = c("bread flour", "manitoba flour", "water", "eggs", "salt", "sugar", "yeast", "butter"),
   weight = c(200, 200, 36, 200, 10, 48, 20, 200),
@@ -131,7 +131,7 @@ brioche <- tbl$tibble(
 
 olivelevain <- tbl$tibble(
   name = "Olive Levain",
-  tags = "liquid levain",
+  tags = list("liquid levain"),
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
   ingredient = c(
     "bread flour", "whole-wheat flour", "water", "salt", "olives",
@@ -165,7 +165,7 @@ olivelevain <- tbl$tibble(
 
 fivegrain <- tbl$tibble(
   name = "Fivegrain Levain",
-  tags = "liquid levain;soaker;keeps well",
+  tags = list(list("liquid levain", "soaker", "keeps well")),
   stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 6)),
   ingredient = c(
     "yeast", "bread flour", "whole-wheat flour", "water", "salt", "bread flour",
@@ -181,9 +181,9 @@ fivegrain <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("3. Mixing"),
     sh$tags$p(
-      "Mix for 6 minutes or until moderate gluten development. 
+      "Mix for 6 minutes or until moderate gluten development.
       Desired dough temperature: 24°C."
-      ),
+    ),
     sh$tags$hr(),
     sh$tags$h6("4. Bulk fermentation"),
     sh$tags$p("Let rest for 60 to 90 minutes."),
@@ -199,15 +199,15 @@ fivegrain <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("7. Baking"),
     sh$tags$p(
-      "Bake at 240°C for 45 minutes. 
+      "Bake at 240°C for 45 minutes.
       High water content requires a full bake."
-      )
+    )
   )
 )
 
 pal_m <- tbl$tibble(
   name = "Pain au Levain",
-  tags = "liquid levain;sourdough",
+  tags = list(list("liquid levain", "sourdough")),
   stage = c(rep("Final fermentation", times = 4), rep("Levain", times = 6)),
   ingredient = c(
     "bread flour", "whole-wheat flour", "water", "salt",
@@ -245,7 +245,7 @@ pal_m <- tbl$tibble(
 
 wwm <- tbl$tibble(
   name = "Whole-wheat Multigrain",
-  tags = "liquid levain;soaker;keeps well",
+  tags = list(list("liquid levain", "soaker", "keeps well")),
   stage = c(rep("Final fermentation", times = 6), rep("Levain", times = 3), rep("Soaker", times = 2)),
   ingredient = c(
     "bread flour", "whole-wheat flour", "water", "salt", "yeast", "honey",
@@ -262,9 +262,9 @@ wwm <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("3. Mixing"),
     sh$tags$p(
-      "Mix for 6 minutes or until moderate gluten development. 
+      "Mix for 6 minutes or until moderate gluten development.
       Desired dough temperature: 24°C."
-      ),
+    ),
     sh$tags$hr(),
     sh$tags$h6("4. Bulk fermentation"),
     sh$tags$p("1 to 2 hours."),
@@ -277,15 +277,15 @@ wwm <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("7. Baking"),
     sh$tags$p(
-      "Bake at 240°C for 45 minutes. 
+      "Bake at 240°C for 45 minutes.
       High water content requires a full bake."
-      )
+    )
   )
 )
 
 pry <- tbl$tibble(
   name = "Pain Rustique",
-  tags = "poolish",
+  tags = list("yeast"),
   stage = c(rep("Final fermentation", times = 4), rep("Poolish", times = 3)),
   ingredient = c(
     "bread flour", "water", "salt", "yeast",
@@ -319,7 +319,7 @@ pry <- tbl$tibble(
 
 pizza <- tbl$tibble(
   name = "Pizza",
-  tags = "biga",
+  tags = list("yeast"),
   stage = c(rep("Final fermentation", times = 5), rep("Biga", times = 3)),
   ingredient = c(
     "bread flour", "water", "salt", "yeast", "evoo",
@@ -354,7 +354,7 @@ pizza <- tbl$tibble(
 
 ciabatta_biga <- tbl$tibble(
   name = "Ciabatta",
-  tags = "biga",
+  tags = list("yeast"),
   stage = c(rep("Final fermentation", times = 4), rep("Biga", times = 3)),
   ingredient = c(
     "bread flour", "water", "salt", "yeast",
@@ -388,7 +388,7 @@ ciabatta_biga <- tbl$tibble(
 
 mpc <- tbl$tibble(
   name = "Miche Pointe à Callière",
-  tags = "stiff levain;keeps well",
+  tags = list(list("levain", "keeps well")),
   stage = c(rep("Final fermentation", times = 3), rep("Levain", times = 3)),
   ingredient = c(
     "high extraction wheat flour", "water", "salt",
@@ -425,7 +425,7 @@ mpc <- tbl$tibble(
 
 flatbread <- tbl$tibble(
   name = "Flat Bread",
-  tags = "leftover levain",
+  tags = list("leftover levain"),
   stage = c(rep("Final fermentation", times = 5)),
   ingredient = c(
     "whole-wheat flour", "bread flour", "liquid levain",

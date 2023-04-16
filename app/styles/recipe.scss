@@ -1,22 +1,31 @@
+$tertiary: #f8f9fb;
+$hovercol: #f2dac0;
+
 .recipe {
   display: inline-block;
-  background-color: $secondary;
   padding: $spacer;
+  background-color: $tertiary;
   border: $border-width solid $border-color;
   @include border-radius;
   @include box-shadow;
   outline: 0;
   width: 350px;
   .tags {
-    //background-color: $secondary;
+    background-color: $secondary;
     border-radius: 20px;
-    color: $gray-600;
+    padding: 1px 10px;
+    margin: 0px 4px 4px 0;
+    
+    &:hover {
+      background-color: $hovercol;
+      transition: all ease-in-out 300ms;
+    }
   }
   margin: $grid-gutter-width;
   // On mobile, span entire width
   @include media-breakpoint-down(sm) {
     display: block;
-    width: auto;
+    width: 90%;
     margin-right: $grid-gutter-width;
   }
 }

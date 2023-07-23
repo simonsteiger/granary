@@ -11,12 +11,16 @@ box::use(
 )
 
 list2atom <- function(x) {
-  unlist(paste0(x, collapse = ""))
+  unlist(paste0(x, collapse =";"))
 }
 
 #' @export
 grouped_choices <- function(data) {
-  unique_recipes <- dp$distinct(data, name, tags)
+  unique_recipes <- dp$distinct(data, name, tags) %>% 
+    dp$rowwise() %>% 
+    dp$mutate(
+      tags = list2atom(tags)
+  )
   
   rye <- unique_recipes %>% 
     dp$filter(str$str_detect(list2atom(tags), "sourdough")) %>% 

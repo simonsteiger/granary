@@ -9,7 +9,7 @@ box::use(
 vermont <- tbl$tibble(
   name = "Vermont sourdough",
   tags = list("liquid levain"),
-  stage = c(rep("Autolysis", times = 3), "Final fermentation", rep("Levain", times = 3)),
+  stage = c(rep("Autolysis", times = 3), "Final dough", rep("Levain", times = 3)),
   ingredient = c("bread flour", "whole-rye flour", "water", "salt", "bread flour", "water", "mature culture"),
   weight = c(6.5, 1.5, 4, 0.19, 2, 2.5, 0.4),
   text = paste0(
@@ -30,7 +30,7 @@ vermont <- tbl$tibble(
     sh$tags$p("Fold either once after 75 minutes or twice at 50 minute intervals."),
     sh$tags$hr(),
     sh$tags$h6("5. Final fermentation"),
-    sh$tags$p("2 hours at 76°C, up to 8 hours at 10°C, or up to 18 hours 4°C."),
+    sh$tags$p("2 hours at 24°C, up to 8 hours at 10°C, or up to 18 hours 4°C."),
     sh$tags$hr(),
     sh$tags$h6("6. Baking"),
     sh$tags$p("Bake at 240°C for 45 minutes.")
@@ -39,8 +39,8 @@ vermont <- tbl$tibble(
 
 vollkornbrot <- tbl$tibble(
   name = "Vollkornbrot",
-  tags = list(list("sourdough", "soaker", "keeps well")),
-  stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 2)),
+  tags = list(list("sourdough", "soaker")),
+  stage = c(rep("Final dough", times = 5), rep("Levain", times = 3), rep("Soaker", times = 2)),
   ingredient = c("whole-rye flour", "water", "salt", "yeast", "sunflower seeds", "whole-rye flour", "water", "mature culture", "rye chops", "water"),
   weight = c(2.73, 0.94, 0.2, 0.18, 0.55, 4.11, 4.11, 0.206, 3.16, 3.16),
   text = paste0(
@@ -69,8 +69,8 @@ vollkornbrot <- tbl$tibble(
 
 semolina <- tbl$tibble(
   name = "Semolina Bread",
-  tags = list("liquid levain"),
-  stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
+  tags = list(list("liquid levain", "amendment")),
+  stage = c(rep("Final dough", times = 5), rep("Levain", times = 3)),
   ingredient = c(
     "bread flour", "durum flour", "water", "toasted sesame", "salt", "bread flour",
     "water", "mature culture"
@@ -103,7 +103,7 @@ semolina <- tbl$tibble(
 brioche <- tbl$tibble(
   name = "Classic Brioche",
   tags = list(list("yeast", "enriched")),
-  stage = "Final fermentation",
+  stage = "Final dough",
   ingredient = c("bread flour", "manitoba flour", "water", "eggs", "salt", "sugar", "yeast", "butter"),
   weight = c(200, 200, 36, 200, 10, 48, 20, 200),
   text = paste0(
@@ -131,8 +131,8 @@ brioche <- tbl$tibble(
 
 olivelevain <- tbl$tibble(
   name = "Olive Levain",
-  tags = list("liquid levain"),
-  stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3)),
+  tags = list(list("liquid levain", "amendment")),
+  stage = c(rep("Final dough", times = 5), rep("Levain", times = 3)),
   ingredient = c(
     "bread flour", "whole-wheat flour", "water", "salt", "olives",
     "bread flour", "water", "mature culture"
@@ -165,8 +165,8 @@ olivelevain <- tbl$tibble(
 
 fivegrain <- tbl$tibble(
   name = "Fivegrain Levain",
-  tags = list(list("liquid levain", "soaker", "keeps well")),
-  stage = c(rep("Final fermentation", times = 5), rep("Levain", times = 3), rep("Soaker", times = 6)),
+  tags = list(list("liquid levain", "soaker")),
+  stage = c(rep("Final dough", times = 5), rep("Levain", times = 3), rep("Soaker", times = 6)),
   ingredient = c(
     "yeast", "bread flour", "whole-wheat flour", "water", "salt", "bread flour",
     "water", "mature culture", "cracked rye", "flaxseeds", "sunflower seeds", "oats", "water", "salt"
@@ -208,7 +208,7 @@ fivegrain <- tbl$tibble(
 pal_m <- tbl$tibble(
   name = "Pain au Levain",
   tags = list(list("liquid levain", "sourdough")),
-  stage = c(rep("Final fermentation", times = 4), rep("Levain", times = 6)),
+  stage = c(rep("Final dough", times = 4), rep("Levain", times = 6)),
   ingredient = c(
     "bread flour", "whole-wheat flour", "water", "salt",
     "bread flour", "water", "mature culture, wheat",
@@ -245,8 +245,8 @@ pal_m <- tbl$tibble(
 
 wwm <- tbl$tibble(
   name = "Whole-wheat Multigrain",
-  tags = list(list("liquid levain", "soaker", "keeps well")),
-  stage = c(rep("Final fermentation", times = 6), rep("Levain", times = 3), rep("Soaker", times = 2)),
+  tags = list(list("liquid levain", "soaker")),
+  stage = c(rep("Final dough", times = 6), rep("Levain", times = 3), rep("Soaker", times = 2)),
   ingredient = c(
     "bread flour", "whole-wheat flour", "water", "salt", "yeast", "honey",
     "bread flour", "water", "mature culture",
@@ -286,7 +286,7 @@ wwm <- tbl$tibble(
 pry <- tbl$tibble(
   name = "Pain Rustique",
   tags = list("yeast"),
-  stage = c(rep("Final fermentation", times = 4), rep("Poolish", times = 3)),
+  stage = c(rep("Final dough", times = 4), rep("Poolish", times = 3)),
   ingredient = c(
     "bread flour", "water", "salt", "yeast",
     "bread flour", "water", "yeast"
@@ -320,9 +320,9 @@ pry <- tbl$tibble(
 pizza <- tbl$tibble(
   name = "Pizza",
   tags = list("yeast"),
-  stage = c(rep("Final fermentation", times = 5), rep("Biga", times = 3)),
+  stage = c(rep("Final dough", times = 5), rep("Biga", times = 3)),
   ingredient = c(
-    "bread flour", "water", "salt", "yeast", "evoo",
+    "bread flour", "water", "salt", "yeast", "olive oil",
     "bread flour", "water", "yeast"
   ),
   weight = c(2.06, 1.44, .046, .033, .13, .52, .31, .001),
@@ -354,8 +354,8 @@ pizza <- tbl$tibble(
 
 ciabatta_biga <- tbl$tibble(
   name = "Ciabatta",
-  tags = list("yeast"),
-  stage = c(rep("Final fermentation", times = 4), rep("Biga", times = 3)),
+  tags = list(list("yeast", "high hydration")),
+  stage = c(rep("Final dough", times = 4), rep("Biga", times = 3)),
   ingredient = c(
     "bread flour", "water", "salt", "yeast",
     "bread flour", "water", "yeast"
@@ -388,13 +388,13 @@ ciabatta_biga <- tbl$tibble(
 
 mpc <- tbl$tibble(
   name = "Miche Pointe à Callière",
-  tags = list(list("levain", "keeps well")),
-  stage = c(rep("Final fermentation", times = 3), rep("Levain", times = 3)),
+  tags = list(list("levain", "high hydration")),
+  stage = c(rep("Final dough", times = 4), rep("Levain", times = 3)),
   ingredient = c(
-    "high extraction wheat flour", "water", "salt",
-    "high extraction wheat flour", "water", "mature culture"
+    "whole-wheat flour", "bread flour", "water", "salt",
+    "whole-wheat flour", "water", "mature culture"
   ),
-  weight = c(8, 7, .18, 2, 1.2, .4),
+  weight = c(6, 2, 7, .18, 2, 1.2, .4),
   text = paste0(
     sh$tags$h6("1. Stiff-textured levain"),
     sh$tags$p("Mix and ripen for 12 hours at 21°C."),
@@ -426,7 +426,7 @@ mpc <- tbl$tibble(
 flatbread <- tbl$tibble(
   name = "Flat Bread",
   tags = list("leftover levain"),
-  stage = c(rep("Final fermentation", times = 5)),
+  stage = c(rep("Final dough", times = 5)),
   ingredient = c(
     "whole-wheat flour", "bread flour", "liquid levain",
     "salt", "cumin, toasted"
@@ -446,6 +446,223 @@ flatbread <- tbl$tibble(
   )
 )
 
+# roasted garlic
+roasted_garlic <- tbl$tibble(
+  name = "Roasted Garlic Levain",
+  tags = list(list("levain", "amendment", "roll")),
+  stage = c(rep("Final dough", times = 7), rep("Levain", times = 3)),
+  ingredient = c(
+    "bread flour", "whole-wheat flour", "water", "olive oil", "salt", "yeast", "roasted garlic",
+    "bread flour", "water", "mature culture"
+  ),
+  weight = c(7, 1, 5.3, .5, .2, .1, .35, 2, 1.2, .4),
+  text = paste0(
+    sh$tags$h6("1. Stiff-textured levain"),
+    sh$tags$p("Mix and ripen for 12 hours at 21°C."),
+    sh$tags$hr(),
+    sh$tags$h6("2. Roasted garlic"),
+    sh$tags$p(
+      "Cut off the foot of the garlic cloves, leaving the skin on. 
+      Drizzle some olive oil and roast in the oven for at 180°C for 40 minutes.
+      Peel and briefly mash after roasting, and it's ready for mixing."
+    ),
+    sh$tags$h6("3. Mixing"),
+    sh$tags$p(
+      "Mix for around 5 minutes until the dough is of medium consistency. Adjust hydration if necessary.
+      Desired dough temperature: 24°C."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("4. Bulk fermentation"),
+    sh$tags$p("1 to 2 hours."),
+    sh$tags$h6("5. Folding"),
+    sh$tags$p("If the bulk fermentation lasts 2 hours, fold after one hour. Otherwise, no folds needed."),
+    sh$tags$h6("6. Shaping"),
+    sh$tags$p("Divide if necessary; shape round or oblong. Also good for rolls."),
+    sh$tags$h6("7. Final fermentation"),
+    sh$tags$p("1 to 1.5 hours at 24°C."),
+    sh$tags$h6("8. Baking"),
+    sh$tags$p("For 45 minutes at 240°C, with steam.")
+  )
+)
+
+simits <- tbl$tibble(
+  name = "Simits",
+  tags = list(list("yeast", "enriched")),
+  stage = c(rep("Final dough", times = 5)),
+  ingredient = c(
+    "bread flour", "water", "salt", "yeast", "butter"
+  ),
+  weight = c(3.28, 2.034, .072, .057, .722),
+  text = paste0(
+    sh$tags$h6("1. Mixing"),
+    sh$tags$p("Mix everything except the butter. The dough without the butter will be stiff at first,
+              but mix on until good gluten development. Add the butter in chunks and continue to mix until it is encorporated.
+              Desired dough temperature: 24°C."),
+    sh$tags$hr(),
+    sh$tags$h6("2. Bulk fermentation"),
+    sh$tags$p(
+      "1.5 to 2 hours."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("3. Folding"),
+    sh$tags$p(
+      "Fold once halfway through bulk fermentation. 
+      Don't hesitate to fold twice if the dough requires more strength."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("4. Dividing and shaping"),
+    sh$tags$p("Divide the dough into squarish 85g pieces. Flatten, then roll into 20cm long cylinders.
+              Shape like a bagel. Press into damp cloth, then into sesame seeds.
+              Proof on sheet pan with seeds up."),
+    sh$tags$hr(),
+    sh$tags$h6("5. Final fermentation"),
+    sh$tags$p("45 minutes at 24°C."),
+    sh$tags$hr(),
+    sh$tags$h6("6. Baking"),
+    sh$tags$p("Divide if necessary; shape round or oblong. Also good for rolls."),
+    sh$tags$hr(),
+    sh$tags$h6("7. Final fermentation"),
+    sh$tags$p("1 to 1.5 hours at 24°C."),
+    sh$tags$hr(),
+    sh$tags$h6("8. Baking"),
+    sh$tags$p("For 20 minutes at 230°C, without steam. The crust should be light brown, the interior somewhat moist.")
+  )
+)
+
+bialys <- tbl$tibble(
+  name = "Bialys",
+  tags = list(list("yeast", "amendment")),
+  stage = c(rep("Final dough", times = 4), rep("Onion filling", times = 2)),
+  ingredient = c(
+    "bread flour", "water", "salt", "yeast",
+    "onion", "bread crumbs"
+  ),
+  weight = c(3.81, 2.21, .073, .061, .17, .017),
+  text = paste0(
+    sh$tags$h6("1. Onion filling"),
+    sh$tags$p(
+      "Mix finely chopped onions and bread crumbs. 
+      Cover and rest for a couple of hours; this can be refrigerated for several days if made ahead of time."),
+    sh$tags$hr(),
+    sh$tags$h6("2. Mixing"),
+    sh$tags$p(
+      "Bialy dough is stiff. Mix slowly for 3 minutes to incorporate the ingredients, then faster for 5 minutes, 
+      or until the gluten network is well developed. Desired dough temperature: 24°C."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("3. Bulk fermentation"),
+    sh$tags$p(
+      "2 hours."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("4. Folding"),
+    sh$tags$p("Fold after 1 hour."),
+    sh$tags$hr(),
+    sh$tags$h6("5. Dividing"),
+    sh$tags$p("Divide into 85g pieces. Make tight balls and proof for 30 minutes."),
+    sh$tags$hr(),
+    sh$tags$h6("6. Shaping and filling"),
+    sh$tags$p("Make something like a baby pizza with a high crust.
+              Fill with a rounded teaspoon of onion filling."),
+    sh$tags$hr(),
+    sh$tags$h6("7. Baking"),
+    sh$tags$p("Bake for 8-10 minutes at 250°C."),
+    sh$tags$hr(),
+    sh$tags$h6("- Variations -"),
+    sh$tags$p("Use garlic instead of or to complement the onions. Try sprinkling poppy or sesame seeds before baking.")
+  )
+)
+
+blackbread <- tbl$tibble(
+  name = "Black bread",
+  tags = list(list("sourdough", "soaker")),
+  stage = c(rep("Final dough", times = 4), rep("Soaker", times = 4)),
+  ingredient = c(
+    "sifted rye flour", "bread flour", "salt", "yeast",
+    "old bread", "coffee, ground", "vegetable oil", "water, hot"
+  ),
+  weight = c(2.5, 4, .18, .15, .8, .24, .24, 4),
+  text = paste0(
+    sh$tags$h6("1. Sourdough"),
+    sh$tags$p("Mix and ripen for 14-16 hours at 21°C."),
+    sh$tags$hr(),
+    sh$tags$h6("2. Old-bread soaker"),
+    sh$tags$p(
+      "Pour water over roasted old bread, then add coffee and oil. Stir well and cover."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("3. Mixing"),
+    sh$tags$p("Mix for 4 minutes. To control the dough temperature, you have to heat or cool the soaker before mixing.
+              Desired dough temperature: 25°C."),
+    sh$tags$hr(),
+    sh$tags$h6("4. Bulk fermentation"),
+    sh$tags$p("30 to 45 minutes."),
+    sh$tags$hr(),
+    sh$tags$h6("5. Dividing and shaping"),
+    sh$tags$p("Divide into round or oblong pieces; between 700g and 900g each."),
+    sh$tags$hr(),
+    sh$tags$h6("6. Final fermentation"),
+    sh$tags$p(
+      "50 to 60 minutes at 27°C."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("7. Baking"),
+    sh$tags$p(
+      "Bake for 15 minutes at 240°C, then lower to 210°C and finish baking for 35 to 45 minutes depending on loaf weight."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("- Variation -"),
+    sh$tags$p(
+      "Roll the loafs in Black Caraway seeds before baking."
+    )
+  )
+)
+
+detmolder <- tbl$tibble(
+  name = "Three-stage Detmolder",
+  tags = list(list("sourdough", "time-consuming")),
+  stage = c(
+    rep("Final dough", times = 4),
+    rep("Freshening", times = 3),
+    rep("Basic sour", times = 3),
+    rep("Full sour", times = 3)
+    ),
+  ingredient = c(
+    "sifted rye flour", "bread flour", "water", "salt",
+    "whole-rye flour", "water", "mature culture",
+    "whole-rye flour", "water", "freshening",
+    "whole-rye flour", "water", "basic sour"
+  ),
+  weight = c(5.22, 1, 4.29, .18, .08, .12, .04, 1, .78, .24, 2.7, 2.7, 2.02),
+  text = paste0(
+    sh$tags$h6("1. Freshening sour"),
+    sh$tags$p("Mix and ripen for 5 to 6 hours at 25°C. This phase develops the yeast potential of the sourdough."),
+    sh$tags$hr(),
+    sh$tags$h6("2. Basic sour"),
+    sh$tags$p("Mix and ripen at between 22°C and 27°C for 15 to 24 hours, depending on the temperature.
+              The warmer the temperature, the shorter the rest. This stiff phase develops the acetic properties of the sourdough."),
+    sh$tags$hr(),
+    sh$tags$h6("3. Full sour"),
+    sh$tags$p("Mix and ripen at 30°C for 3 hours. This looser phase develops the lactic properties of the sourdough."),
+    sh$tags$hr(),
+    sh$tags$h6("4. Mixing"),
+    sh$tags$p("Mix for around 5 minutes. The result will be sticky, but don't add more flour."),
+    sh$tags$hr(),
+    sh$tags$h6("5. Bulk fermentation"),
+    sh$tags$p("10 to 20 minutes."),
+    sh$tags$hr(),
+    sh$tags$h6("6. Dividing and shaping"),
+    sh$tags$p("Divide into 700g to 1200g pieces and shape round."),
+    sh$tags$hr(),
+    sh$tags$h6("7. Final fermentation"),
+    sh$tags$p("1 hour at 28°C."),
+    sh$tags$hr(),
+    sh$tags$h6("8. Baking"),
+    sh$tags$p("Bake at 450°C for 10 minutes, then lower to 210°C and continue for 50 to 60 minutes depending on loaf weight.
+              After baking, let the loaves rest for at least 24 hours to stabilize the crumb.")
+  )
+)
+
 #' @export
 data <-
   rbind(
@@ -461,6 +678,11 @@ data <-
     pizza,
     ciabatta_biga,
     mpc,
-    flatbread
+    flatbread,
+    roasted_garlic,
+    simits,
+    bialys,
+    blackbread,
+    detmolder
   ) %>%
   dp$arrange(name)

@@ -1,5 +1,6 @@
 $tertiary: #f8f9fb;
-$hovercol: #f2dac0;
+$hover-color: #f2dac0;
+$recipe-width: 350px;
 
 .recipe {
   display: inline-block;
@@ -9,7 +10,8 @@ $hovercol: #f2dac0;
   @include border-radius;
   @include box-shadow;
   outline: 0;
-  width: 350px;
+  width: $recipe-width;
+  
   .tags {
     background-color: $secondary;
     border-radius: 20px;
@@ -17,10 +19,11 @@ $hovercol: #f2dac0;
     margin: 0px 4px 4px 0;
     
     &:hover {
-      background-color: $hovercol;
+      background-color: $hover-color;
       transition: all ease-in-out 300ms;
     }
   }
+  
   margin: $grid-gutter-width;
   // On mobile, span entire width
   @include media-breakpoint-down(sm) {

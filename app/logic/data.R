@@ -8,7 +8,7 @@ box::use(
 
 flaxseed <- tbl$tibble(
   name = "Flaxseed bread",
-  tags = list("sourdough", "soaker", "keeps well"),
+  tags = list(list("sourdough", "soaker", "keeps well")),
   stage = c(rep("Sourdough", times = 3), rep("Soaker", times = 2), rep("Final fermentation", times = 5)),
   ingredient = c("whole-rye flour", "water", "mature culture", "flaxseeds", "water", "medium-rye flour", "bread flour", "water", "salt", 
                 "yeast"),
@@ -715,6 +715,7 @@ data <-
     simits,
     bialys,
     blackbread,
-    detmolder
+    detmolder,
+    flaxseed
   ) %>%
   dp$arrange(name)

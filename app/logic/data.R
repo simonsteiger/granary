@@ -15,7 +15,7 @@ walnut <- tbl$tibble(
   weight = c(3.0, 2.49, 0.15, 5.0, 2.0, 4.31, 0.18, 0.15, 2.5),
   text = paste0(
     sh$tags$h6("1. Sourdough"),
-    sh$tags$p("Mix and ripen for 14-16 hours at 21°C."),
+    sh$tags$p("Mix all ingredients except the walnuts until moderate gluten development. Thenn add walnuts and ripen for 14-16 hours at 21°C."),
     sh$tags$hr(),
     sh$tags$h6("2. Bulk fermentation"),
     sh$tags$p("1 hour"),
@@ -23,7 +23,7 @@ walnut <- tbl$tibble(
     sh$tags$h6("3. Final fermentation"),
     sh$tags$p("50 to 60 minutes at 26°C."),
     sh$tags$hr(),
-    sh$tags$h6("6. Baking"),
+    sh$tags$h6("4. Baking"),
     sh$tags$p("Bake at 240°C for 15 minutes,
               then bake at 220°C for 20 to 25 minutes.")
   )

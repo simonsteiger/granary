@@ -6,8 +6,32 @@ box::use(
   emo,
 )
 
+walnut <- tbl$tibble(
+  name = "Walnut Bread",
+  tags = list(list("sourdough", "walnuts", "mature culture")),
+  stage = c(rep("Sourdough", times = 3), rep("Final fermentation", times = 6)),
+  ingredient = c("whole-rye flour", "water", "mature culture", "bread flour", "whole-rye flour", "water", "salt", "yeast", 
+                "walnuts"),
+  weight = c(3.0, 2.49, 0.15, 5.0, 2.0, 4.31, 0.18, 0.15, 2.5),
+  text = paste0(
+    sh$tags$h6("1. Sourdough"),
+    sh$tags$p("Mix and ripen for 14-16 hours at 21°C."),
+    sh$tags$hr(),
+    sh$tags$h6("2. Bulk fermentation"),
+    sh$tags$p("1 hour"),
+    sh$tags$hr(),
+    sh$tags$h6("3. Final fermentation"),
+    sh$tags$p("50 to 60 minutes at 26°C."),
+    sh$tags$hr(),
+    sh$tags$h6("6. Baking"),
+    sh$tags$p("Bake at 240°C for 15 minutes,
+              then bake at 220°C for 20 to 25 minutes.")
+  )
+)
+
+
 flaxseed <- tbl$tibble(
-  name = "Flaxseed bread",
+  name = "Flaxseed Bread",
   tags = list(list("sourdough", "soaker", "keeps well")),
   stage = c(rep("Sourdough", times = 3), rep("Soaker", times = 2), rep("Final fermentation", times = 5)),
   ingredient = c("whole-rye flour", "water", "mature culture", "flaxseeds", "water", "medium-rye flour", "bread flour", "water", "salt", 
@@ -15,12 +39,12 @@ flaxseed <- tbl$tibble(
   weight = c(4.0, 3.2, 0.2, 1.0, 3.0, 2.0, 4.0, 1.3, 0.18, 0.15),
   text = paste0(
     sh$tags$h6("1. Sourdough"),
-    sh$tags$p("Mix and ripen for 14-16 hours at 21°C."),
+    sh$tags$p("Mix and ripen for 14 to 16 hours at 21°C."),
     sh$tags$hr(),
     sh$tags$h6("2. Soaker"),
     sh$tags$p(
       "Pour cold water over the flaxseeds.
-      Cover with plastic and let soak for 14-16 hours."
+      Cover with plastic and let soak for 14 to 16 hours."
     ),
     sh$tags$hr(),
     sh$tags$h6("3. Bulk fermentation"),
@@ -716,6 +740,7 @@ data <-
     bialys,
     blackbread,
     detmolder,
-    flaxseed
+    flaxseed,
+    walnut
   ) %>%
   dp$arrange(name)

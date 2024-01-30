@@ -5,5 +5,5 @@ account: simonsteiger
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8681582
-bundleId: 7488412
+bundleId: 8200377
 url: https://simonsteiger.shinyapps.io/granary/

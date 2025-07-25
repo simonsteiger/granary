@@ -218,8 +218,8 @@ olivelevain <- tbl$tibble(
   )
 )
 
-sourdoughseed <- tbl$tibble(
-  name = "Sourdough Seed Bread",
+fivegrain <- tbl$tibble(
+  name = "Fivegrain levain",
   tags = list(list("liquid levain", "soaker")),
   stage = c(rep("Final dough", times = 5), rep("Levain", times = 3), rep("Soaker", times = 6)),
   ingredient = c(
@@ -260,16 +260,26 @@ sourdoughseed <- tbl$tibble(
   )
 )
 
-fivegrain <- tbl$tibble(
-  name = "Fivegrain Levain",
+sourdoughseed <- tbl$tibble(
+  name = "Sourdough Seed Bread",
   tags = list(list("liquid levain", "soaker")),
   stage = c(rep("Final dough", times = 6), rep("Levain", times = 3), rep("Soaker", times = 2)),
   ingredient = c(
+    # Final dough
     "bread flour", "whole-rye flour", "sunflower seeds, toasted", "sesame seeds, toasted", "water", "salt", 
+    # Levain
     "bread flour", "water", "mature culture", 
+    # Soaker
     "flaxseeds", "water"
   ),
-  weight = c(7.7, 0.8, 1.2, 0.6, 3.52, 0.23, 1.5, 1.88, 0.3, 0.7, 2.1),
+  weight = c(
+    # Final dough
+    7.7, 0.8, 1.2, 0.6, 3.52, 0.23,
+    # Levain
+    1.5, 1.88, 0.3,
+    # Soaker
+    0.7, 2.1
+  ),
   text = paste0(
     sh$tags$h6("1. Liquid levain"),
     sh$tags$p("Mix and ripen for 12-16 hours at 21°C."),

@@ -219,8 +219,8 @@ olivelevain <- tbl$tibble(
   )
 )
 
-fivegrain <- tbl$tibble(
-  name = "Fivegrain Levain",
+sourdoughseed <- tbl$tibble(
+  name = "Sourdough Seed Bread",
   tags = list(list("liquid levain", "soaker")),
   stage = c(rep("Final dough", times = 5), rep("Levain", times = 3), rep("Soaker", times = 6)),
   ingredient = c(
@@ -257,6 +257,47 @@ fivegrain <- tbl$tibble(
     sh$tags$p(
       "Bake at 240°C for 45 minutes.
       High water content requires a full bake."
+    )
+  )
+)
+
+fivegrain <- tbl$tibble(
+  name = "Fivegrain Levain",
+  tags = list(list("liquid levain", "soaker")),
+  stage = c(rep("Final dough", times = 6), rep("Levain", times = 3), rep("Soaker", times = 2)),
+  ingredient = c(
+    "bread flour", "whole-rye flour", "sunflower seeds, toasted", "sesame seeds, toasted", "water", "salt", 
+    "bread flour", "water", "mature culture", 
+    "flaxseeds", "water"
+  ),
+  weight = c(7.7, 0.8, 1.2, 0.6, 3.52, 0.23, 1.5, 1.88, 0.3, 0.7, 2.1),
+  text = paste0(
+    sh$tags$h6("1. Liquid levain"),
+    sh$tags$p("Mix and ripen for 12-16 hours at 21°C."),
+    sh$tags$hr(),
+    sh$tags$h6("2. Soaker"),
+    sh$tags$p("Make a cold soaker and cover for 12-16 hours."),
+    sh$tags$hr(),
+    sh$tags$h6("3. Mixing"),
+    sh$tags$p(
+      "Mix for 6 minutes or until moderate gluten development.
+      Desired dough temperature: 24°C."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("4. Bulk fermentation"),
+    sh$tags$p("Let rest for 150 minutes."),
+    sh$tags$hr(),
+    sh$tags$h6("5. Folding"),
+    sh$tags$p("Fold once at 75 minutes, or twice at 50 minute intervals."),
+    sh$tags$hr(),
+    sh$tags$h6("6. Final fermentation"),
+    sh$tags$p(
+      "Up to 8 hours at 10°C, or up to 18 hours at 4°C."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("7. Baking"),
+    sh$tags$p(
+      "Bake at 240°C for 40-45 minutes."
     )
   )
 )
@@ -728,6 +769,7 @@ data <-
     brioche,
     olivelevain,
     fivegrain,
+    sourdoughseed,
     pal_m,
     pry,
     wwm,

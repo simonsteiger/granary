@@ -31,7 +31,7 @@ ui <- function(id) {
     bsl$nav(
       title = "Resize",
       bsl$layout_column_wrap(
-        class = "p-2 justify-content-center",
+        class = "p-4 justify-content-center",
         width = "16rem",
         gap = "1rem",
         fill = FALSE,

@@ -2,8 +2,7 @@ box::use(
   magrittr[`%>%`],
   tbl = tibble,
   dp = dplyr,
-  sh = shiny,
-  emo,
+  sh = shiny
 )
 
 walnut <- tbl$tibble(
@@ -445,7 +444,7 @@ pizza <- tbl$tibble(
     sh$tags$p("No need for final fermentation, ready to bake once shaped!"),
     sh$tags$hr(),
     sh$tags$h6("6. Baking"),
-    sh$tags$p("Very. Hot.", emo$ji("fire"))
+    sh$tags$p("Very. Hot.")
   )
 )
 

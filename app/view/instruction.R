@@ -1,11 +1,6 @@
-
 box::use(
   sh = shiny,
   bsl = bslib,
-)
-
-box::use(
-  
 )
 
 # could eventually each category in accordions?

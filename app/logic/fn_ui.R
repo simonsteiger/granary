@@ -11,7 +11,7 @@ box::use(
 )
 
 list2atom <- function(x) {
-  unlist(paste0(x, collapse =";"))
+  unlist(paste0(x, collapse = ";"))
 }
 
 #' @export

@@ -38,7 +38,7 @@ flaxseed <- tbl$tibble(
   weight = c(4.0, 3.2, 0.2, 1.0, 3.0, 2.0, 4.0, 1.3, 0.18, 0.15),
   text = paste0(
     sh$tags$h6("1. Sourdough"),
-    sh$tags$p("Mix and ripen for 14 to 16 hours at 21°C."),
+    sh$tags$p("Mix and ripen for 14-16 hours at 21°C."),
     sh$tags$hr(),
     sh$tags$h6("2. Soaker"),
     sh$tags$p(
@@ -568,7 +568,7 @@ roasted_garlic <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("2. Roasted garlic"),
     sh$tags$p(
-      "Cut off the foot of the garlic cloves, leaving the skin on. 
+      "Cut off the foot of the garlic cloves, leaving the skin on.
       Drizzle some olive oil and roast in the oven for at 180°C for 40 minutes.
       Peel and briefly mash after roasting, and it's ready for mixing."
     ),
@@ -588,6 +588,50 @@ roasted_garlic <- tbl$tibble(
     sh$tags$p("1 to 1.5 hours at 24°C."),
     sh$tags$h6("8. Baking"),
     sh$tags$p("For 45 minutes at 240°C, with steam.")
+  )
+)
+
+# carrot walnut
+carrot_walnut <- tbl$tibble(
+  name = "Carrot and Walnut Bread",
+  tags = list(list("liquid levain", "shelf life")),
+  stage = c(rep("Final dough", times = 7), rep("Levain", times = 3)),
+  ingredient = c(
+    "bread flour", "whole-wheat flour", "water", "salt", "yeast", "carrots, grated, squeezed dry", "walnuts",
+    "bread flour", "water", "mature culture"
+  ),
+  weight = c(3.5, 5, 5.125, .21, .125, 2.5, 2.5, 1.5, 1.875, .3),
+  text = paste0(
+    sh$tags$h6("1. Liquid levain"),
+    sh$tags$p("Mix and ripen for 12-16 hours at 21°C."),
+    sh$tags$hr(),
+    sh$tags$h6("2. Grated carrots"),
+    sh$tags$p(
+      "You will need approximately 75% more carrots by weight to obtain the required weight for the dough.
+      If the carrots are not peeled, you will need about 50% of the weight.
+      Squeeze as much moisture as possible from the carrots and discard or drink."
+    ),
+    sh$tags$h6("3. Mixing"),
+    sh$tags$p(
+      "Add all the ingredients to the mixer except the carrots and walnuts. 
+      Mix for 3 minutes in order to incorporate the ingredients. 
+      Adjust hydration if necessary.
+      Finish mixing for 3 minutes, to moderate gluten development.
+      Add the carrots and walnuts to the dough, mix until they are evenly incorporated.
+      Desired dough temperature: 24°C."
+    ),
+    sh$tags$hr(),
+    sh$tags$h6("4. Bulk fermentation"),
+    sh$tags$p("1.5 hours."),
+    sh$tags$h6("5. Folding"),
+    sh$tags$p("Fold the dough halfway through the bulk fermentation."),
+    sh$tags$h6("6. Shaping"),
+    sh$tags$p("Divide if necessary; shape round or oval, or make into pan loaves."),
+    sh$tags$h6("7. Final fermentation"),
+    sh$tags$p("About 1 hour at 24°C."),
+    sh$tags$h6("8. Baking"),
+    sh$tags$p("With normal steam, 237°C for 15 minutes, then lower the temperature to 221°C to finish the bake. 
+    Loaves scaled at 680g should bake for 35 to 38 minutes.")
   )
 )
 
@@ -742,7 +786,7 @@ detmolder <- tbl$tibble(
   weight = c(5.22, 1, 4.29, .18, .08, .12, .04, 1, .78, .24, 2.7, 2.7, 2.02),
   text = paste0(
     sh$tags$h6("1. Freshening sour"),
-    sh$tags$p("Mix and ripen for 5 to 6 hours at 25°C. This phase develops the yeast potential of the sourdough."),
+    sh$tags$p("Mix and ripen for 5-6 hours at 25°C. This phase develops the yeast potential of the sourdough."),
     sh$tags$hr(),
     sh$tags$h6("2. Basic sour"),
     sh$tags$p("Mix and ripen at between 22°C and 27°C for 15 to 24 hours, depending on the temperature.
@@ -787,6 +831,7 @@ data <-
     mpc,
     flatbread,
     roasted_garlic,
+    carrot_walnut,
     simits,
     bialys,
     blackbread,

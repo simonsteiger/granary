@@ -726,12 +726,13 @@ bialys <- tbl$tibble(
 blackbread <- tbl$tibble(
   name = "Black bread",
   tags = list(list("sourdough", "soaker")),
-  stage = c(rep("Final dough", times = 4), rep("Soaker", times = 4)),
+  stage = c(rep("Final dough", times = 4), rep("Sourdough", 3), rep("Soaker", times = 4)),
   ingredient = c(
     "sifted rye flour", "bread flour", "salt", "yeast",
+    "medium rye flour", "water", "mature culture",
     "old bread", "coffee, ground", "vegetable oil", "water, hot"
   ),
-  weight = c(2.5, 4, .18, .15, .8, .24, .24, 4),
+  weight = c(2.5, 4, .18, .15, 3.5, 2.8, 0.175, .8, .24, .24, 4),
   text = paste0(
     sh$tags$h6("1. Sourdough"),
     sh$tags$p("Mix and ripen for 14-16 hours at 21°C."),

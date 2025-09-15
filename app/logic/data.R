@@ -73,8 +73,8 @@ vermont <- tbl$tibble(
     sh$tags$hr(),
     sh$tags$h6("2. Mixing"),
     sh$tags$p(
-      "Mix all except salt and levain; autolyse for 20 to 60 minutes.
-      Add salt and levain and mix until moderate gluten development.
+      "Mix all ingredients except salt; autolyse for 20 to 60 minutes.
+      Add salt and mix until moderate gluten development.
       Desired dough temperature: 24°C."
     ),
     sh$tags$hr(),
